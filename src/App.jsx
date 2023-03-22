@@ -1,5 +1,5 @@
-import { CadastroPage } from "./pages/Cadastro";
+import { Aside } from "./components"
 
 export const App = () => {
-  return <CadastroPage></CadastroPage>;
+  return <Aside></Aside>
 };
