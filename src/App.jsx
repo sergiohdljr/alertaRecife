@@ -1,5 +1,5 @@
-import { Aside } from "./components"
+import { FeedPage } from "./pages/Feed";
 
 export const App = () => {
-  return <Aside></Aside>
+  return <FeedPage></FeedPage>
 };

@@ -7,6 +7,7 @@ export const AsideStyle = styled.aside`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  background-color: ${({theme})=>theme.branco};
 
   a {
     display: flex;
@@ -22,10 +23,9 @@ export const AsideStyle = styled.aside`
     .img-perfil {
       width: 39px;
       height: 39px;
-      left: 0px;
-      top: 10px;
-      border-radius: 99999px;
+      border-radius: 50%;
       border: 1px solid black;
+      cursor: pointer;
     }
   }
 
@@ -42,7 +42,7 @@ export const AsideStyle = styled.aside`
   }
 
   .button-div {
-    width: 100%;
+    width: 80%;
     display: flex;
     margin-top: 3rem;
 
@@ -61,51 +61,57 @@ export const AsideStyle = styled.aside`
       }
     }
 
-    .btn-mobile{
+    .btn-mobile {
       display: none;
     }
   }
 
   @media screen and (max-width: 580px) {
-  width: 15%; 
+    width: 15%;
 
-  padding-left: 0.2rem;
-  .h3-perfil,h3,h5{
-    display:none;
-  }
-   
-  div{
-    width: 80%;
-    display: flex;
-    justify-content: center;
-
-    .img-perfil{
-      width: 24px;
-      height: 24px;
+    padding-left: 0.2rem;
+    .h3-perfil,
+    h3,
+    h5 {
+      display: none;
     }
-  }
 
-  a{
-    justify-content: center;
-  }
+    div {
+      width: 80%;
+      display: flex;
+      justify-content: center;
 
-  .button-div{
+      .img-perfil {
+        width: 24px;
+        height: 24px;
+      }
+    }
 
-   .btn-mobile{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5px;
-    width: 32px;
-    height: 32px;
-    display: block;
-    border-radius: 50%;
-   }
+    a {
+      justify-content: center;
+    }
 
-   button{
-    display: none;
-   }
-  }
+    .button-div {
+      align-items: center;
+      justify-content: center;
+      .btn-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5px;
+        width: 32px;
+        height: 32px;
+        display: block;
+        border-radius: 50%;
 
+        svg {
+          border-radius: 50%;
+        }
+      }
+
+      button {
+        display: none;
+      }
+    }
   }
 `;
