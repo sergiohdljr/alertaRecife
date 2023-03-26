@@ -1,25 +1,48 @@
 import styled from "styled-components";
 
 export const AsideStyle = styled.aside`
-  width: 25%;
+  width: 180px;
   height: 100vh;
   padding-left: 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background-color: ${({theme})=>theme.branco};
+  background-color: ${({ theme }) => theme.branco};
 
   a {
     display: flex;
     justify-content: start;
     align-items: center;
+    flex-wrap: wrap;
     gap: 0.5rem;
     height: 40px;
-    width: 80%;
+    width: auto;
     color: ${({ theme }) => theme.preto};
+
+    :hover {
+      transition: 5ms all;
+      color: ${({ theme }) => theme.roxoEscuro};
+    }
+  }
+
+  .signOutButton {
+    all: unset;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+
+    :hover {
+      transition: 5ms all;
+      color: ${({ theme }) => theme.roxoEscuro};
+    }
   }
 
   div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
     .img-perfil {
       width: 39px;
       height: 39px;
@@ -48,7 +71,7 @@ export const AsideStyle = styled.aside`
 
     button {
       border: none;
-      width: 190px;
+      width: 90%;
       height: 40px;
       border-radius: 2rem;
       background-color: ${({ theme }) => theme.roxoEscuro};
@@ -75,9 +98,12 @@ export const AsideStyle = styled.aside`
     h5 {
       display: none;
     }
-
+    .signOutButton{
+      align-self: center;
+    }
+    
     div {
-      width: 80%;
+      width: 100%;
       display: flex;
       justify-content: center;
 
@@ -94,6 +120,8 @@ export const AsideStyle = styled.aside`
     .button-div {
       align-items: center;
       justify-content: center;
+      width: 100%;
+
       .btn-mobile {
         display: flex;
         justify-content: center;

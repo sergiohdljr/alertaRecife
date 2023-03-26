@@ -1,6 +1,6 @@
-import { InputField, LoginPage } from "./style";
+import { LoginPage } from "./style";
 import Logo from "../../assets/logo.png";
-import { GoogleChromeLogo } from "@phosphor-icons/react";
+import { GoogleLogo } from "@phosphor-icons/react";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../service/firebase";
 import { useEffect, useState } from "react";
@@ -23,14 +23,12 @@ export const Login = () => {
       .catch((error) => console.log(error));
   };
 
-  const userLocal = localStorage.getItem("user");
-
   return (
     <LoginPage>
       <img src={Logo} alt="" />
       <form>
         <Link onClick={handleGoogleSignIn}>
-          <GoogleChromeLogo size={24} />
+          <GoogleLogo size={24} />
           Entrar com o Google
         </Link>
       </form>

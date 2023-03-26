@@ -1,29 +1,33 @@
 import { ArrowLeft, CalendarBlank } from "@phosphor-icons/react";
 import { Aside } from "../../components/aside";
 import { PerfilPageStyles } from "./style";
-import perfil from "../../assets/Profile Picture.png";
 import { MapPin } from "@phosphor-icons/react";
+import { Link } from "react-router-dom";
 
 export const PerfilPage = () => {
+  const Usuario = JSON.parse(localStorage.getItem("user"))
+
   return (
     <PerfilPageStyles>
-      <Aside></Aside>
+      <Aside>
+        {console.log(Usuario.User)}
+      </Aside>
       <main>
         <nav>
-          <button>
+          <Link to={"/feed"} rel="Voltar para o feed" type="button">
             <ArrowLeft size={24} />
-          </button>
-          <h3>Name</h3>
+          </Link>
+          <h3>{Usuario.displayName}</h3>
         </nav>
         <div className="hero">
           <figure>
-            <img src={perfil} alt="" />
+            <img src={Usuario.photoURL} alt="foto de perfil do usuário" />
           </figure>
           <button> Editar Perfil</button>
         </div>
         <div className="name-user-info">
-          <h1>Name</h1>
-          <p>@userName</p>
+          <h1>{Usuario.displayName}</h1>
+          <p>@{Usuario.email.slice(0,Usuario.email.indexOf("@"))}</p>
         </div>
         <div className="location-createdAt">
           <div>
@@ -32,7 +36,7 @@ export const PerfilPage = () => {
           </div>
           <div>
             <CalendarBlank size={16} color={"#5B7083"} />
-            <p>created at 2023</p>
+            <p>{Usuario.createdAt}</p>
           </div>
         </div>
         <section>

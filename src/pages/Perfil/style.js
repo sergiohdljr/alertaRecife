@@ -3,12 +3,12 @@ import styled from "styled-components";
 export const PerfilPageStyles = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: #5b7083;
+  background-color: ${({ theme }) => theme.roxoClaro};
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
 
   main {
-    background-color:${({theme})=>theme.branco} ;
+    background-color: ${({ theme }) => theme.branco};
     width: 70%;
     height: fit-content;
     padding: 0rem 1rem 0rem 1rem;
@@ -23,13 +23,16 @@ export const PerfilPageStyles = styled.div`
       align-items: center;
       gap: 0.5rem;
 
-      button{
-          all: unset;
-          cursor: pointer;
+      button {
+        all: unset;
+        cursor: pointer;
       }
 
       h3 {
-        font-size: 1rem;
+        font-weight: 400;
+        font-size: 1.1rem;
+        letter-spacing: 0.07em;
+        color: ${({ theme }) => theme.preto};
       }
     }
     .hero {
@@ -71,7 +74,8 @@ export const PerfilPageStyles = styled.div`
       gap: 0.2rem;
 
       h1 {
-        font-size: 1.3rem;
+        font-weight: 400;
+        font-size: 1.1rem;
         letter-spacing: -0.012em;
         color: ${({ theme }) => theme.preto};
       }
@@ -83,6 +87,7 @@ export const PerfilPageStyles = styled.div`
     .location-createdAt {
       display: flex;
       gap: 2rem;
+      flex-wrap: wrap;
 
       div {
         display: flex;

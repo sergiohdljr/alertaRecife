@@ -3,17 +3,17 @@ import styled from "styled-components";
 export const FeedPageStyles = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: #5b7083;
+  background-color: ${({theme})=>theme.roxoClaro};
   display: flex;
   gap: 0.5rem;
 
   main {
-    background-color: ${({ theme }) => theme.branco};
+    background-color: transparent;
     width: 70%;
     height: fit-content;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.3rem;
 
     header {
       background-color: ${({ theme }) => theme.roxoEscuro};
@@ -49,6 +49,7 @@ export const FeedPageStyles = styled.div`
     width: 100%;
     height: 118px;
     padding: 0.3rem;
+    background-color: ${({theme})=>theme.branco};
 
     figure {
       width: auto;

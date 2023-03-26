@@ -27,13 +27,18 @@ export const LoginPage = styled.div`
         height: 54px;
         border-radius: 1rem;
         display: flex;
-        font-size: 1.2rem;
+        font-size: 1rem;
         font-weight: 500;
         justify-content: center;
         align-items: center;
+        gap: 0.5rem;
         cursor: pointer;
 
         :hover {
+          opacity: 70%;
+        }
+
+        :active{
           opacity: 70%;
         }
       }
