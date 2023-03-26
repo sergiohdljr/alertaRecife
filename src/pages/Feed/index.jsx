@@ -1,14 +1,11 @@
-import {
-  ImageSquare,
-  ImagesSquare,
-  MagnifyingGlass,
-} from "@phosphor-icons/react";
+import { ImagesSquare, MagnifyingGlass } from "@phosphor-icons/react";
 import { Aside } from "../../components/aside";
 import { FeedPageStyles } from "./style";
-import profile from "../../assets/Profile Picture.png";
 import { Post } from "../../components/Post";
 
 export const FeedPage = () => {
+  const Usuario = JSON.parse(localStorage.getItem("user"));
+
   return (
     <FeedPageStyles>
       <Aside />
@@ -21,13 +18,13 @@ export const FeedPage = () => {
         </header>
         <div className="reportar-ocorrencia">
           <figure>
-            <img src={profile} alt="" />
+            <img src={Usuario.photoURL} alt="" />
           </figure>
           <div className="text-area-icons">
             <textarea
               name=""
               cols="8"
-              rows="7"
+              rows="50"
               placeholder="Reporte uma ocorrência..."
             />
             <div className="btns">
@@ -38,7 +35,7 @@ export const FeedPage = () => {
             </div>
           </div>
         </div>
-        <Post/>
+        <Post />
       </main>
     </FeedPageStyles>
   );

@@ -4,15 +4,16 @@ import { House, DeviceMobile, User, DotsThreeCircle, Siren } from "@phosphor-ico
 
 
 export const Aside = () => {
+    const Usuario = JSON.parse(localStorage.getItem("user"));
     return(
         
         <AsideStyle>
             <img src={logo} alt="" />
             
             <div>
-              <img href="#" className="img-perfil"></img>
-              <h3 className="h3-perfil">usuário </h3>
-              <h5>@usuário</h5>
+              <img src={Usuario.photoURL} className="img-perfil"></img>
+              <h3 className="h3-perfil">{Usuario.displayName} </h3>
+              <h5></h5>
             </div>
          
 

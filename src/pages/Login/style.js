@@ -19,14 +19,7 @@ export const LoginPage = styled.div`
     justify-content: flex-start;
     gap: 2rem;
 
-    div {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      button {
+      a {
         all: unset;
         background-color: ${(props) => props.theme.roxoEscuro};
         color: ${(props) => props.theme.branco};
@@ -44,16 +37,7 @@ export const LoginPage = styled.div`
           opacity: 70%;
         }
       }
-      h3 {
-        cursor: pointer;
-        color: ${(props) => props.theme.roxoEscuro};
-
-        :hover {
-          text-decoration: underline;
-        }
-      }
     }
-  }
 `;
 
 export const InputField = styled.label`
