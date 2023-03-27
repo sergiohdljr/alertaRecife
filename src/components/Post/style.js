@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 export const PostStyle = styled.div`
   width: 100%;
-  height: 369px;
+  height: fit-content;
   padding: 0.5rem;
   display: flex;
   background-color: ${({ theme }) => theme.branco};
   border-radius: 0.3rem;
+  gap: 0.5rem;
 
   figure {
     width: 16%;
@@ -42,7 +43,7 @@ export const PostStyle = styled.div`
     }
 
     p {
-      text-align: justify;
+      word-break: break-all;
     }
 
     iframe {

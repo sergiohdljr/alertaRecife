@@ -9,7 +9,7 @@ import {
   Users,
   SignOut,
 } from "@phosphor-icons/react";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 
 export const Aside = () => {
   const Usuario = JSON.parse(localStorage.getItem("user"));

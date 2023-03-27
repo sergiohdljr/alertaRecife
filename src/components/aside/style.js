@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const AsideStyle = styled.aside`
-  width: 180px;
+  width: 28%;
   height: 100vh;
   padding-left: 0.5rem;
   display: flex;

@@ -1,7 +1,7 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Login } from "../pages/Login";
 import { FeedPage } from "../pages/Feed";
-import { PerfilPage } from "../pages/Perfil"
+import { PerfilPage } from "../pages/Perfil";
 
 export const RoutesApp = () => {
   const UsuarioAuth = JSON.parse(localStorage.getItem("user"));
@@ -10,8 +10,8 @@ export const RoutesApp = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={UsuarioAuth ? <FeedPage /> : <Login />} />
-        <Route path="/feed" element={<FeedPage />} />
-        <Route path="/perfil" element={<PerfilPage />} />
+        <Route path="/feed" element={UsuarioAuth ? <FeedPage /> : <Login />} />
+        <Route path="/perfil" element={UsuarioAuth ? <PerfilPage /> : <Login />} />
       </Routes>
     </BrowserRouter>
   );

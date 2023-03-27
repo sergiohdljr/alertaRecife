@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const FeedPageStyles = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: ${({theme})=>theme.roxoClaro};
+  background-color: ${({ theme }) => theme.roxoClaro};
   display: flex;
   gap: 0.5rem;
 
@@ -49,7 +49,8 @@ export const FeedPageStyles = styled.div`
     width: 100%;
     height: 118px;
     padding: 0.3rem;
-    background-color: ${({theme})=>theme.branco};
+    border-radius: 0.3rem;
+    background-color: ${({ theme }) => theme.branco};
 
     figure {
       width: auto;
@@ -73,8 +74,14 @@ export const FeedPageStyles = styled.div`
       }
 
       .btns {
+        height: fit-content;
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
+
+        input::-webkit-file-upload-button {
+           font-size:0.8rem ;
+        }
 
         button {
           all: unset;
@@ -98,7 +105,7 @@ export const FeedPageStyles = styled.div`
 
   @media screen and (max-width: 580px) {
     main {
-      flex-grow: 1;
+      width: 80%;
     }
   }
 `;
