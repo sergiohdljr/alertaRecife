@@ -49,6 +49,7 @@ export const FeedPageStyles = styled.div`
     width: 100%;
     height: 118px;
     padding: 0.3rem;
+    border-radius: 0.3rem;
     background-color: ${({theme})=>theme.branco};
 
     figure {
@@ -91,6 +92,10 @@ export const FeedPageStyles = styled.div`
           justify-content: center;
           align-items: center;
           font-size: 0.9rem;
+
+          :disabled{
+            opacity: 50%;
+          }
         }
       }
     }

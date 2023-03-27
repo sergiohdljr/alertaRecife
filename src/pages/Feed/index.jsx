@@ -31,7 +31,7 @@ export const FeedPage = () => {
               <button>
                 <ImagesSquare size={20} color={"#8B3DFF"} />
               </button>
-              <button className="alertar">alertar</button>
+              <button className="alertar" disabled >alertar</button>
             </div>
           </div>
         </div>
