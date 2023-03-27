@@ -75,6 +75,7 @@ export const FeedPage = () => {
               <button type="submit" className="alertar">
                 alertar
               </button>
+              <button className="alertar" disabled >alertar</button>
             </div>
           </div>
         </form>

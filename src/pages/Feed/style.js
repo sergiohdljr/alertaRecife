@@ -50,7 +50,7 @@ export const FeedPageStyles = styled.div`
     height: 118px;
     padding: 0.3rem;
     border-radius: 0.3rem;
-    background-color: ${({ theme }) => theme.branco};
+    background-color: ${({theme})=>theme.branco};
 
     figure {
       width: auto;
@@ -98,6 +98,10 @@ export const FeedPageStyles = styled.div`
           justify-content: center;
           align-items: center;
           font-size: 0.9rem;
+
+          :disabled{
+            opacity: 50%;
+          }
         }
       }
     }
