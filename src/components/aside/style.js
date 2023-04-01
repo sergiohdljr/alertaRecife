@@ -2,12 +2,15 @@ import styled from "styled-components";
 
 export const AsideStyle = styled.aside`
   width: 18%;
-  height: 100vh;
+  height: 78vh;
   padding-left: 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  border-radius: 0.3rem;
   background-color: ${({ theme }) => theme.branco};
+  position: sticky;
+  top:0;
 
   a {
     display: flex;

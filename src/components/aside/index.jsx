@@ -1,15 +1,7 @@
 import { AsideStyle } from "./style";
 import logo from "../../assets/logo.png";
-import {
-  House,
-  DeviceMobile,
-  User,
-  DotsThreeCircle,
-  Siren,
-  Users,
-  SignOut,
-} from "@phosphor-icons/react";
-import { Link, redirect } from "react-router-dom";
+import {House,DeviceMobile,User,DotsThreeCircle,Siren,Users,SignOut,} from "@phosphor-icons/react";
+import { Link } from "react-router-dom";
 
 export const Aside = () => {
   const Usuario = JSON.parse(localStorage.getItem("user"));

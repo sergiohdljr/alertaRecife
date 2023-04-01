@@ -2,17 +2,19 @@ import styled from "styled-components";
 
 export const FeedPageStyles = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: ${({ theme }) => theme.roxoClaro};
   display: flex;
   gap: 0.5rem;
 
   main {
     background-color: transparent;
-    width: 70%;
+    width: 90%;
+    margin: 0 auto;
     height: fit-content;
     display: flex;
-    flex-direction: column;
+    align-itens: center;
+    flex-direction:row;
     gap: 0.3rem;
 
     header {
@@ -22,6 +24,8 @@ export const FeedPageStyles = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+      position: sticky;
+      top:0;
 
       form {
         width: 230px;
@@ -41,11 +45,18 @@ export const FeedPageStyles = styled.div`
         }
       }
     }
+
+    section{
+      width: 78%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
   }
 
-  @media screen and (max-width: 580px) {
+  @media screen and (max-width: 980px) {
     main {
-      width: 80%;
+      width: 100%;
     }
   }
 `;

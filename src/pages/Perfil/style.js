@@ -8,13 +8,20 @@ export const PerfilPageStyles = styled.div`
   gap: 0.5rem;
 
   main {
-    background-color: ${({ theme }) => theme.branco};
-    width: 70%;
+    width: 85%;
+    margin: 0 auto;
     height: fit-content;
-    padding: 0rem 1rem 0rem 1rem;
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    gap: 0.5rem;
+
+    .content {
+      background-color: ${({ theme }) => theme.branco};
+      width: 78%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 0rem 1rem 0rem 1rem;
+    }
 
     nav {
       width: 100%;
@@ -119,7 +126,9 @@ export const PerfilPageStyles = styled.div`
     @media screen and (max-width: 580px) {
       padding: 0.3rem;
       flex-grow: 1;
-
+      .content {
+        width: 100%;
+      }
       .hero {
         align-items: flex-start;
         justify-content: space-around;

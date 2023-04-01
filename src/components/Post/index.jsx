@@ -1,21 +1,21 @@
 import { PostStyle } from "./style";
 
-export const Post = () => {
-  const Usuario = JSON.parse(localStorage.getItem("user"));
+export const Post = ({descricaoDaOcorrencia,photoURL,displayName,email}) => {
+  // const Usuario = JSON.parse(localStorage.getItem("user"));
 
   return (
     <PostStyle>
       <figure>
-        <img src={Usuario.photoURL} alt="perfil Usuário" />
+        <img src={photoURL} alt="perfil Usuário" />
       </figure>
       <div className="content">
         <div className="user-info">
-          <h3>{Usuario.displayName}</h3>
-          <p>{Usuario.email}</p>
+          <h3>{displayName}</h3>
+          <p>@{email.slice(0,email.indexOf("@"))}</p>
         </div>
-          <p>
-            mmmmmmmmmmmmmmmmmmmmmmmmmkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-          </p>
+        <p>
+         {descricaoDaOcorrencia}
+        </p>
       </div>
     </PostStyle>
   );
