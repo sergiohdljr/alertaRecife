@@ -17,7 +17,6 @@ export const FeedPage = () => {
 
   return (
     <FeedPageStyles>
-      {ocorrencias && console.log(ocorrencias)}
       <main>
         <Aside />
         <section>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { PostStyle } from "./style";
 import { useEffect } from "react";
+import { apiKey } from "../../apikey";
 
 export const Post = ({
   descricaoDaOcorrencia,
@@ -16,7 +17,7 @@ export const Post = ({
 
   useEffect(()=>{
      fetch(
-       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyDlQ8gDpjz2LoNoR_KkJBgaJMiTY8XRO4c`
+       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`
      )
        .then((res) => res.json())
        .then((loc) => setLocalizacao(loc.results));
