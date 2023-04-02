@@ -3,41 +3,55 @@ import { Images, PhoneOutgoing } from "@phosphor-icons/react";
 import { useState } from "react";
 import { useGeolocated } from "react-geolocated";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { Erro, ReportarOcorrenciaStyle } from "./styles";
-
-const schemaPost = z.object({
-  ocorrencia: z.string().min(1, { message: "Descreva a ocorrência" }),
-  ocorrenciaPhotoURL: z.any().optional(),
-});
+import { schemaPost } from "./schemaDeValidacao";
+import { api } from "../../service/axios";
 
 export const ReportarOcorrencia = () => {
   const Usuario = JSON.parse(localStorage.getItem("user"));
 
-  const {register,handleSubmit,formState: { errors },reset} = useForm({ resolver: zodResolver(schemaPost) });
-  const { coords } = useGeolocated();
+  const [img, setImg] = useState();
 
-  const onSubmit = (dadosFormulario) => {
+  const convertToURL = (file) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImg(reader.result.toString());
+    };
+    reader.readAsDataURL(file);
+  };
 
-    const date = new Date();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({ resolver: zodResolver(schemaPost) });
 
-    const formDados = {
-      usuario: Usuario,
-      ocorrencia: dadosFormulario.ocorrencia,
-      photoURL: dadosFormulario.ocorrenciaPhotoURL[0],
-      createdAt: date,
-      geoLoc: {
+  const { coords } = useGeolocated({
+    positionOptions: {
+      enableHighAccuracy: false,
+    },
+  });
+
+  const onSubmit = async (dadosFormulario) => {
+    convertToURL(dadosFormulario.ocorrenciaPhotoURL[0]);
+
+    const postOcorrencia = await api
+      .post("/ocorrencia", {
+        descricaoDaOcorrencia: dadosFormulario.ocorrencia,
         latitude: coords.latitude,
         longitude: coords.longitude,
-      },
-    };
-    console.log(formDados);
-    reset();
+        email: Usuario.email,
+        nome: Usuario.displayName,
+        fotoPerfil: Usuario.photoURL,
+      })
+      .then((resp) => console.log(resp.status));
   };
 
   return (
     <div>
       <ReportarOcorrenciaStyle onSubmit={handleSubmit(onSubmit)}>
+        <h2>{img}</h2>
         <figure>
           <img src={Usuario.photoURL} alt="" />
         </figure>
@@ -52,7 +66,7 @@ export const ReportarOcorrencia = () => {
           />
           <div className="btns">
             <label htmlFor="ocorrenciaPhotoURL">
-                <Images size={20}/>
+              <Images size={20} />
               <input
                 type="file"
                 accept="img/png, img/jpeg"
@@ -70,13 +84,3 @@ export const ReportarOcorrencia = () => {
     </div>
   );
 };
-
-// const convertToURL = (file) => {
-//   const reader = new FileReader();
-
-//   reader.onloadend = () => {
-//     setImagem(reader.result.toString());
-//   };
-
-//   reader.readAsDataURL(file);
-// };

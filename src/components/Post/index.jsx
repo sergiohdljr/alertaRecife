@@ -1,7 +1,26 @@
+import { useState } from "react";
 import { PostStyle } from "./style";
+import { useEffect } from "react";
 
-export const Post = ({descricaoDaOcorrencia,photoURL,displayName,email}) => {
-  // const Usuario = JSON.parse(localStorage.getItem("user"));
+export const Post = ({
+  descricaoDaOcorrencia,
+  latitude,
+  longitude,
+  photoURL,
+  displayName,
+  email,
+  fotoOcorrencia
+}) => {
+  
+  const [localizacao, setLocalizacao] = useState()
+
+  useEffect(()=>{
+     fetch(
+       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyDlQ8gDpjz2LoNoR_KkJBgaJMiTY8XRO4c`
+     )
+       .then((res) => res.json())
+       .then((loc) => setLocalizacao(loc.results));
+  },[])
 
   return (
     <PostStyle>
@@ -11,11 +30,15 @@ export const Post = ({descricaoDaOcorrencia,photoURL,displayName,email}) => {
       <div className="content">
         <div className="user-info">
           <h3>{displayName}</h3>
-          <p>@{email.slice(0,email.indexOf("@"))}</p>
+          <p>@{email.slice(0, email.indexOf("@"))}</p>
         </div>
-        <p>
-         {descricaoDaOcorrencia}
-        </p>
+        <article>
+          <p>{descricaoDaOcorrencia}</p>
+          <p className="localizacao">
+            - aproximadamente em: {localizacao?.map((loc) => loc.formatted_address)[4]}
+          </p>
+          <img src={fotoOcorrencia} alt="ocorrencia" />
+        </article>
       </div>
     </PostStyle>
   );

@@ -23,13 +23,13 @@ export const PostStyle = styled.div`
   }
 
   .content {
-    flex-grow: 1;
+    width: 84%;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     gap: 1rem;
 
     .user-info {
-
       h3 {
         font-style: normal;
         font-weight: 400;
@@ -37,19 +37,24 @@ export const PostStyle = styled.div`
         line-height: 20px;
       }
 
-      p{
-        color: ${({theme})=>theme.azulClaro};
+      p {
+        color: ${({ theme }) => theme.azulClaro};
       }
     }
 
-    p {
-      word-break: break-all;
-    }
+    article {
+      width: 99%;
+      display:flex;
+      flex-direction: column;
+      gap:0.3rem;
 
-    iframe {
-      width: 100%;
-      flex-grow: 1;
-      border: 0;
+      p {
+        word-break: break-all;
+      }
+      .localizacao{
+        opacity:85%;
+        color: gray;
+      }
     }
   }
 `;
