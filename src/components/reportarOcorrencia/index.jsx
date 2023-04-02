@@ -1,24 +1,29 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Images, PhoneOutgoing } from "@phosphor-icons/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useGeolocated } from "react-geolocated";
 import { useForm } from "react-hook-form";
 import { Erro, ReportarOcorrenciaStyle } from "./styles";
 import { schemaPost } from "./schemaDeValidacao";
 import { api } from "../../service/axios";
+import axios from "axios";
+import { apiKey } from "../../apikey";
 
 export const ReportarOcorrencia = () => {
   const Usuario = JSON.parse(localStorage.getItem("user"));
 
   const [img, setImg] = useState();
 
-  const convertToURL = (file) => {
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setImg(reader.result.toString());
-    };
-    reader.readAsDataURL(file);
-  };
+  // const convertToURL = (file) => {
+  //   const reader = new FileReader();
+  //   reader.onloadend = () => {
+  //     setImg(reader.result.toString());
+  //   };
+  //   reader.readAsDataURL(file);
+  // };
+  const [coords, setCoords] = useState({});
+
+  useEffect(() => {}, []);
 
   const {
     register,
@@ -27,20 +32,19 @@ export const ReportarOcorrencia = () => {
     reset,
   } = useForm({ resolver: zodResolver(schemaPost) });
 
-  const { coords } = useGeolocated({
-    positionOptions: {
-      enableHighAccuracy: false,
-    },
-  });
-
   const onSubmit = async (dadosFormulario) => {
-    convertToURL(dadosFormulario.ocorrenciaPhotoURL[0]);
+    // convertToURL(dadosFormulario.ocorrenciaPhotoURL[0]);
+    //  await axios
+    //    .post(
+    //      `https://www.googleapis.com/geolocation/v1/geolocate?key=${apiKey}`
+    //    )
+    //    .then((loc) => setCoords(loc.data.location));
 
     const postOcorrencia = await api
       .post("/ocorrencia", {
         descricaoDaOcorrencia: dadosFormulario.ocorrencia,
-        latitude: coords.latitude,
-        longitude: coords.longitude,
+        latitude:-7.9912631,
+        longitude:-34.9160838,
         email: Usuario.email,
         nome: Usuario.displayName,
         fotoPerfil: Usuario.photoURL,
@@ -51,7 +55,6 @@ export const ReportarOcorrencia = () => {
   return (
     <div>
       <ReportarOcorrenciaStyle onSubmit={handleSubmit(onSubmit)}>
-        <h2>{img}</h2>
         <figure>
           <img src={Usuario.photoURL} alt="" />
         </figure>

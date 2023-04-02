@@ -22,6 +22,7 @@ export const Post = ({
        .then((res) => res.json())
        .then((loc) => setLocalizacao(loc.results));
   },[])
+  
 
   return (
     <PostStyle>
