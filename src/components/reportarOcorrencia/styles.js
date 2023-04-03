@@ -37,7 +37,16 @@ export const ReportarOcorrenciaStyle = styled.form`
       justify-content: space-between;
       flex-wrap: wrap;
 
-      label {
+     
+
+      div{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        justify-content: center;
+        align-items: center;
+        
+        label {
         width: 80px;
         height: 30px;
         background-color: ${({ theme }) => theme.roxoEscuro};
@@ -55,6 +64,18 @@ export const ReportarOcorrenciaStyle = styled.form`
 
         input[type="file"] {
           display: none;
+        }
+      }
+        select{
+        width: 80px;
+        height: 30px;
+        border: 2px  ${({ theme }) => theme.roxoEscuro} solid;
+        background-color: transparent;
+        color: ${({ theme }) => theme.roxoEscuro};
+        border-radius: 2rem;
+        font-weight: 400;
+        cursor: pointer;
+
         }
       }
 

@@ -6,8 +6,7 @@ import { useForm } from "react-hook-form";
 import { Erro, ReportarOcorrenciaStyle } from "./styles";
 import { schemaPost } from "./schemaDeValidacao";
 import { api } from "../../service/axios";
-import axios from "axios";
-import { apiKey } from "../../apikey";
+// import { apiKey } from "../../apikey";
 
 export const ReportarOcorrencia = () => {
   const Usuario = JSON.parse(localStorage.getItem("user"));
@@ -32,24 +31,30 @@ export const ReportarOcorrencia = () => {
     reset,
   } = useForm({ resolver: zodResolver(schemaPost) });
 
-  const onSubmit = async (dadosFormulario) => {
+  const onSubmit = async (dados) => {
     // convertToURL(dadosFormulario.ocorrenciaPhotoURL[0]);
     //  await axios
     //    .post(
     //      `https://www.googleapis.com/geolocation/v1/geolocate?key=${apiKey}`
     //    )
     //    .then((loc) => setCoords(loc.data.location));
+    // tipoDacorrencia: dadosFormulario.tipoOcorrencia,
+        // descricaoDaOcorrencia: dadosFormulario.ocorrencia,
+        // latitude:-7.9912631,
+        // longitude:-34.9160838,
+        // email: Usuario.email,
+        // nome: Usuario.displayName,
+        // fotoPerfil: Usuario.photoURL,
 
-    const postOcorrencia = await api
-      .post("/ocorrencia", {
-        descricaoDaOcorrencia: dadosFormulario.ocorrencia,
-        latitude:-7.9912631,
-        longitude:-34.9160838,
-        email: Usuario.email,
-        nome: Usuario.displayName,
-        fotoPerfil: Usuario.photoURL,
-      })
-      .then((resp) => console.log(resp.status));
+    await api.post("/ocorrencia", {
+   descricaoDaOcorrencia: dados.ocorrencia,
+   tipoDaOcorrencia: dados.tipoOcorrencia,
+   latitude:-8.038048688095296,
+   longitude:-34.906623453841064,
+   email:Usuario.email,
+   fotoPerfil:Usuario.photoURL,
+   nome:Usuario.displayName
+  }).then((resp) => console.log(resp.status));
   };
 
   return (
@@ -68,6 +73,7 @@ export const ReportarOcorrencia = () => {
             {...register("ocorrencia")}
           />
           <div className="btns">
+            <div>
             <label htmlFor="ocorrenciaPhotoURL">
               <Images size={20} />
               <input
@@ -77,6 +83,13 @@ export const ReportarOcorrencia = () => {
                 id="ocorrenciaPhotoURL"
               />
             </label>
+               <select {...register("tipoOcorrencia")} id="tipoOcorrencia">
+                 <option value="Assalto">Assalto</option>
+                 <option value="Assedio">Assedio</option>
+                 <option value="Violencia">Violencia</option>
+                 <option value="Acidente">Acidente</option>
+               </select>
+            </div>
             <button className="alertar" type="submit">
               alertar
             </button>
