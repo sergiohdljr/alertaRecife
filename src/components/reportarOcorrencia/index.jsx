@@ -12,18 +12,7 @@ import { apiKey } from "../../apikey";
 export const ReportarOcorrencia = () => {
   const Usuario = JSON.parse(localStorage.getItem("user"));
 
-  const [img, setImg] = useState();
-
-  // const convertToURL = (file) => {
-  //   const reader = new FileReader();
-  //   reader.onloadend = () => {
-  //     setImg(reader.result.toString());
-  //   };
-  //   reader.readAsDataURL(file);
-  // };
-  const [coords, setCoords] = useState({});
-
-  useEffect(() => {}, []);
+  const { coords } = useGeolocated()
 
   const {
     register,
@@ -43,8 +32,8 @@ export const ReportarOcorrencia = () => {
     const postOcorrencia = await api
       .post("/ocorrencia", {
         descricaoDaOcorrencia: dadosFormulario.ocorrencia,
-        latitude:-7.9912631,
-        longitude:-34.9160838,
+        latitude:coords.latitude,
+        longitude:coords.longitude,
         email: Usuario.email,
         nome: Usuario.displayName,
         fotoPerfil: Usuario.photoURL,
