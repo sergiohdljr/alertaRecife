@@ -1,16 +1,16 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Images, PhoneOutgoing } from "@phosphor-icons/react";
-import { useEffect, useState } from "react";
+import { Images } from "@phosphor-icons/react";
 import { useGeolocated } from "react-geolocated";
 import { useForm } from "react-hook-form";
 import { Erro, ReportarOcorrenciaStyle } from "./styles";
 import { schemaPost } from "./schemaDeValidacao";
 import { api } from "../../service/axios";
 
+
 export const ReportarOcorrencia = () => {
   const Usuario = JSON.parse(localStorage.getItem("user"));
 
-  const { coords } = useGeolocated()
+  const { coords } = useGeolocated();
 
   const {
     register,
@@ -22,9 +22,10 @@ export const ReportarOcorrencia = () => {
   const onSubmit = async (dados) => {
     const postOcorrencia = await api
       .post("/ocorrencia", {
-        descricaoDaOcorrencia: dadosFormulario.ocorrencia,
-        latitude:coords.latitude,
-        longitude:coords.longitude,
+        descricaoDaOcorrencia: dados.ocorrencia,
+        tipoDaOcorrencia: dados.tipoOcorrencia,
+        latitude: coords.latitude,
+        longitude: coords.longitude,
         email: Usuario.email,
         nome: Usuario.displayName,
         fotoPerfil: Usuario.photoURL,
@@ -49,21 +50,21 @@ export const ReportarOcorrencia = () => {
           />
           <div className="btns">
             <div>
-            <label htmlFor="ocorrenciaPhotoURL">
-              <Images size={20} />
-              <input
-                type="file"
-                accept="img/png, img/jpeg"
-                {...register("ocorrenciaPhotoURL")}
-                id="ocorrenciaPhotoURL"
-              />
-            </label>
-               <select {...register("tipoOcorrencia")} id="tipoOcorrencia">
-                 <option value="Assalto">Assalto</option>
-                 <option value="Assedio">Assedio</option>
-                 <option value="Violencia">Violencia</option>
-                 <option value="Acidente">Acidente</option>
-               </select>
+              <label htmlFor="ocorrenciaPhotoURL">
+                <Images size={20} />
+                <input
+                  type="file"
+                  accept="img/png, img/jpeg"
+                  {...register("ocorrenciaPhotoURL")}
+                  id="ocorrenciaPhotoURL"
+                />
+              </label>
+              <select {...register("tipoOcorrencia")} id="tipoOcorrencia">
+                <option value="Assalto">Assalto</option>
+                <option value="Assedio">Assedio</option>
+                <option value="Violencia">Violencia</option>
+                <option value="Acidente">Acidente</option>
+              </select>
             </div>
             <button className="alertar" type="submit">
               alertar

@@ -1,47 +1,78 @@
-import { ArrowLeft, CalendarBlank } from "@phosphor-icons/react";
+import { ArrowLeft } from "@phosphor-icons/react";
 import { Aside } from "../../components/aside";
 import { PerfilPageStyles } from "./style";
 import { MapPin } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
+import { api } from "../../service/axios";
+import { useQuery } from "react-query";
+import { Post } from "../../components/post";
 
 export const PerfilPage = () => {
-  const Usuario = JSON.parse(localStorage.getItem("user"))
+  const Usuario = JSON.parse(localStorage.getItem("user"));
+
+  const fetchFeed = api
+    .get(`/ocorrencias/${Usuario.email}`)
+    .then((ocorrencias) => ocorrencias.data);
+
+  const { data: ocorrencias } = useQuery(
+    "ocorrenciasUsuario",
+    async () => await fetchFeed
+  );
+
+  const dadosUsuario = ocorrencias;
+  const OcorrenciasDoUsuario = ocorrencias?.Ocorrencias;
 
   return (
     <PerfilPageStyles>
       <main>
         <Aside />
         <div className="content">
-          <nav>
-            <Link to={"/feed"} rel="Voltar para o feed" type="button">
-              <ArrowLeft size={24} />
-            </Link>
-            <h3>{Usuario.displayName}</h3>
-          </nav>
-          <div className="hero">
-            <figure>
-              <img src={Usuario.photoURL} alt="foto de perfil do usuário" />
-            </figure>
-            <button> Editar Perfil</button>
-          </div>
-          <div className="name-user-info">
-            <h1>{Usuario.displayName}</h1>
-            <p>@{Usuario.email.slice(0, Usuario.email.indexOf("@"))}</p>
-          </div>
-          <div className="location-createdAt">
-            <div>
-              <MapPin size={16} color={"#5B7083"} />
-              <p>Local</p>
+          <div className="container">
+            <nav>
+              <Link to={"/feed"} rel="Voltar para o feed" type="button">
+                <ArrowLeft size={24} />
+              </Link>
+              <div className="user-ocorrencias-number">
+                <h3>{Usuario.displayName}</h3>
+                <p>({dadosUsuario?._count?.Ocorrencias} ocorrencias postadas)</p>
+              </div>
+            </nav>
+            <div className="hero">
+              <figure>
+                <img src={Usuario.photoURL} alt="foto de perfil do usuário" />
+              </figure>
+              <button> Editar Perfil</button>
             </div>
-            <div>
-              <CalendarBlank size={16} color={"#5B7083"} />
-              <p>{Usuario.createdAt}</p>
+            <div className="name-user-info">
+              <h1>{Usuario.displayName}</h1>
+              <p>@{Usuario.email.slice(0, Usuario.email.indexOf("@"))}</p>
             </div>
+            <div className="location-createdAt">
+              <div>
+                <MapPin size={16} color={"#5B7083"} />
+                <p>Local</p>
+              </div>
+            </div>
+            <section>
+              <h2>Ocorrencias</h2>
+            </section>
           </div>
-          <section>
-            <h3>Ocorrencias</h3>
+          <section className="ocorrencias">
+            {OcorrenciasDoUsuario &&
+              OcorrenciasDoUsuario.map((ocorrencia) => (
+                <Post
+                  key={ocorrencia.id}
+                  descricaoDaOcorrencia={ocorrencia.descricaoDaOcorrencia}
+                  fotoOcorrencia={ocorrencia.fotoOcorrencia}
+                  displayName={dadosUsuario.nome}
+                  email={dadosUsuario.email}
+                  photoURL={dadosUsuario.fotoPerfil}
+                  latitude={ocorrencia.latitude}
+                  longitude={ocorrencia.longitude}
+                  tipoOcorrencia={ocorrencia.tipoDaOcorrencia}
+                />
+              ))}
           </section>
-          <div className="posts"></div>
         </div>
       </main>
     </PerfilPageStyles>

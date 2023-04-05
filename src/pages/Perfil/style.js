@@ -10,105 +10,129 @@ export const PerfilPageStyles = styled.div`
   main {
     width: 85%;
     margin: 0 auto;
-    height: fit-content;
+    height: auto;
     display: flex;
     gap: 0.5rem;
 
     .content {
-      background-color: ${({ theme }) => theme.branco};
+      background-color: transparent;
       width: 78%;
+      height: fit-content;
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
-      padding: 0rem 1rem 0rem 1rem;
-    }
 
-    nav {
-      width: 100%;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-
-      button {
-        all: unset;
-        cursor: pointer;
-      }
-
-      h3 {
-        font-weight: 400;
-        font-size: 1.1rem;
-        letter-spacing: 0.07em;
-        color: ${({ theme }) => theme.preto};
-      }
-    }
-    .hero {
-      width: 100%;
-      height: 190px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-
-      figure {
-        width: 150px;
-        height: 150px;
+      .container {
+        background-color: ${({ theme }) => theme.branco};
         display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        padding: 0rem 0.5rem 0rem 0.5rem;
 
-        img {
+        nav {
+          background-color: ${({ theme }) => theme.branco};
           width: 100%;
-          height: 100%;
-          border-radius: 50%;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+
+          button {
+            all: unset;
+            cursor: pointer;
+          }
+
+          .user-ocorrencias-number{
+            display:flex;
+            flex-direction:column;
+
+          h3 {
+            font-weight: 400;
+            font-size: 1.1rem;
+            color: ${({ theme }) => theme.preto};
+          }
+          p{
+            font-size:0.7rem;
+            color: ${({theme})=>theme.azulClaro};
+            opacity:85%;
+          }
         }
       }
-      button {
-        width: 112px;
-        height: 40px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        all: unser;
-        border: 1px ${({ theme }) => theme.roxoEscuro} solid;
-        border-radius: 2rem;
-        background-color: transparent;
-        color: ${({ theme }) => theme.roxoEscuro};
-        cursor: pointer;
-      }
-    }
-    .name-user-info {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
+        .hero {
+          background-color: ${({ theme }) => theme.branco};
+          width: 100%;
+          height: 150px;
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
 
-      h1 {
-        font-weight: 400;
-        font-size: 1.1rem;
-        letter-spacing: -0.012em;
-        color: ${({ theme }) => theme.preto};
-      }
-      p {
-        font-size: 0.8rem;
-        color: #5b7083;
-      }
-    }
-    .location-createdAt {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
+          figure {
+            width: 150px;
+            height: 150px;
+            display: flex;
 
-      div {
-        display: flex;
-        gap: 0.5rem;
+            img {
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+            }
+          }
+          button {
+            width: 112px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            all: unser;
+            border: 1px ${({ theme }) => theme.roxoEscuro} solid;
+            border-radius: 2rem;
+            background-color: transparent;
+            color: ${({ theme }) => theme.roxoEscuro};
+            cursor: pointer;
+          }
+        }
+        .name-user-info {
+          background-color: ${({ theme }) => theme.branco};
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 0.2rem;
 
-        p {
-          font-size: 0.8rem;
-          color: #5b7083;
+          h1 {
+            font-weight: 400;
+            font-size: 1.1rem;
+            letter-spacing: -0.012em;
+            color: ${({ theme }) => theme.preto};
+          }
+          p {
+            font-size: 0.8rem;
+            color: #5b7083;
+          }
+        }
+        .location-createdAt {
+          background-color: ${({ theme }) => theme.branco};
+          display: flex;
+          gap: 2rem;
+          flex-wrap: wrap;
+
+          div {
+            display: flex;
+            gap: 0.5rem;
+
+            p {
+              font-size: 0.8rem;
+              color: #5b7083;
+            }
+          }
         }
       }
     }
+
     section {
-      h3 {
-        width: 110px;
+      background-color: ${({ theme }) => theme.branco};
+      h2 {
+        font-size: 1.3rem;
+        width: 130px;
         color: ${({ theme }) => theme.roxoEscuro};
         cursor: pointer;
 
@@ -119,31 +143,35 @@ export const PerfilPageStyles = styled.div`
       }
     }
 
-    .posts {
-      flex-grow: 1;
-    }
-
     @media screen and (max-width: 580px) {
-      padding: 0.3rem;
       flex-grow: 1;
-      .content {
+
+      main {
         width: 100%;
-      }
-      .hero {
-        align-items: flex-start;
-        justify-content: space-around;
-        flex-direction: column;
-        gap: 1rem;
-        height: 170px;
 
-        figure {
-          width: 100px;
-          height: 100px;
+        section {
+          width: 100%;
 
-          img {
+          .content {
             width: 100%;
-            height: 100%;
-            border-radius: 50%;
+          }
+          .hero {
+            align-items: flex-start;
+            justify-content: space-around;
+            flex-direction: column;
+            gap: 1rem;
+            height: 170px;
+
+            figure {
+              width: 100px;
+              height: 100px;
+
+              img {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+              }
+            }
           }
         }
       }

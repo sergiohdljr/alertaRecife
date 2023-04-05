@@ -10,7 +10,7 @@ export const PostStyle = styled.div`
   gap: 0.5rem;
 
   figure {
-    width: 16%;
+    width: auto;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -23,36 +23,51 @@ export const PostStyle = styled.div`
   }
 
   .content {
-    width: 84%;
+    flex-grow:1;
     height: fit-content;
     display: flex;
     flex-direction: column;
     gap: 1rem;
 
     .user-info {
-      h3 {
-        font-style: normal;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 20px;
-      }
+      display:flex;
+      justify-content: space-between;
+      .user {
+        h3 {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 20px;
+        }
 
-      p {
-        color: ${({ theme }) => theme.azulClaro};
+        p {
+          color: ${({ theme }) => theme.azulClaro};
+        }
+      }
+      .tipoOcorrencia{
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        justify-content: space-between;
+
+        p{
+          color:red;
+          font-size:0.8rem;
+        }
       }
     }
 
     article {
       width: 99%;
-      display:flex;
+      display: flex;
       flex-direction: column;
-      gap:0.3rem;
+      gap: 0.3rem;
 
       p {
         word-break: break-all;
       }
-      .localizacao{
-        opacity:85%;
+      .localizacao {
+        opacity: 85%;
         color: gray;
       }
     }

@@ -7,9 +7,8 @@ import { useQuery } from "react-query";
 import { api } from "../../service/axios";
 
 export const FeedPage = () => {
-
   const fetchFeed = api.get("/ocorrencias").then(ocorrencias=>ocorrencias.data)
-  
+    
   const { data: ocorrencias } = useQuery(
     "ocorrencias",
     async () => await fetchFeed
@@ -27,6 +26,7 @@ export const FeedPage = () => {
             </form>
           </header>
           <ReportarOcorrencia />
+          {/* {ocorrencias && console.log(ocorrencias)} */}
           {ocorrencias &&
             ocorrencias?.map((ocorrencia) => (
               <Post
@@ -38,6 +38,7 @@ export const FeedPage = () => {
                 photoURL={ocorrencia.autor.fotoPerfil}
                 latitude={ocorrencia.latitude}
                 longitude={ocorrencia.longitude}
+                tipoOcorrencia={ocorrencia.tipoDaOcorrencia}
               />
             ))}
         </section>
