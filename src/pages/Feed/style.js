@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const FeedPageStyles = styled.div`
   width: 100%;
-  height: 100%;
+  height: fit-content;
+  margin-bottom:1rem;
   background-color: ${({ theme }) => theme.roxoClaro};
   display: flex;
   gap: 0.5rem;

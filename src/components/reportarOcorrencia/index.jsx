@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { Erro, ReportarOcorrenciaStyle } from "./styles";
 import { schemaPost } from "./schemaDeValidacao";
 import { api } from "../../service/axios";
-
+import { client } from "../../../src/service/queryClient";
 
 export const ReportarOcorrencia = () => {
   const Usuario = JSON.parse(localStorage.getItem("user"));
@@ -30,7 +30,11 @@ export const ReportarOcorrencia = () => {
         nome: Usuario.displayName,
         fotoPerfil: Usuario.photoURL,
       })
-      .then((resp) => console.log(resp.status));
+      .then((resp) => {
+        if(resp.status===200){
+          client.invalidateQueries({queryKey:["ocorrencias"]})
+        }
+      });
   };
 
   return (
