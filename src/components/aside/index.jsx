@@ -26,7 +26,7 @@ export const Aside = () => {
         <h3 className="h3-perfil">{Usuario.displayName} </h3>
       </div>
 
-      <Link to={"#"}>
+      <Link to={"/home"}>
         <House size={24} />
         <h3> Inicio</h3>
       </Link>

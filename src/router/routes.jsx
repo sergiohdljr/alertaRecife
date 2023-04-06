@@ -11,9 +11,9 @@ export const RoutesApp = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={UsuarioAuth ? <FeedPage /> : <Login />} />
+        <Route path="/home" element={UsuarioAuth ? <HomePage /> : <Login />} />
         <Route path="/feed" element={UsuarioAuth ? <FeedPage /> : <Login />} />
-        <Route path="/perfil" element={UsuarioAuth ? <PerfilPage /> : <Login />}
-        />
+        <Route path="/perfil" element={UsuarioAuth ? <PerfilPage /> : <Login />} />
       </Routes>
     </BrowserRouter>
   );
