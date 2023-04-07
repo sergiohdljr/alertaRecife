@@ -26,13 +26,11 @@ export const Login = () => {
 
   return (
     <LoginPage>
-      <img src={Logo} alt="" />
-      <form>
+      <img src={Logo} alt="logo-alerta-recife" width={350} height={290} />
         <Link onClick={handleGoogleSignIn}>
           <GoogleLogo size={24} />
           Entrar com o Google
         </Link>
-      </form>
     </LoginPage>
   );
 };

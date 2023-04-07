@@ -3,44 +3,33 @@ import styled from "styled-components";
 export const LoginPage = styled.div`
   width: 100%;
   height: 100%;
-  background-color: ${(props) => props.theme.roxoClaro};
+  background-color: ${({ theme }) => theme.cores.background};
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  form {
-    width: 85%;
-    max-width: 400px;
-    height: 60%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 2rem;
+    a {
+      all: unset;
+      background-color: ${({ theme }) => theme.cores.roxoEscuro};
+      color: ${({ theme }) => theme.cores.app};
+      width: 70%;
+      height: 54px;
+      border-radius: 1rem;
+      display: flex;
+      font-size: 1rem;
+      font-weight: 500;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
 
-      a {
-        all: unset;
-        background-color: ${(props) => props.theme.roxoEscuro};
-        color: ${(props) => props.theme.branco};
-        width: 70%;
-        height: 54px;
-        border-radius: 1rem;
-        display: flex;
-        font-size: 1rem;
-        font-weight: 500;
-        justify-content: center;
-        align-items: center;
-        gap: 0.5rem;
-        cursor: pointer;
+      :hover {
+        opacity: 70%;
+      }
 
-        :hover {
-          opacity: 70%;
-        }
-
-        :active{
-          opacity: 70%;
-        }
+      :active {
+        opacity: 70%;
       }
     }
 `;
