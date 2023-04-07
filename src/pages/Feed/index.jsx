@@ -1,14 +1,16 @@
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import { Aside } from "../../components/aside";
 import { FeedPageStyles } from "./style";
-import { Post } from "../../components/post";
 import { ReportarOcorrencia } from "../../components/reportarOcorrencia";
+import { Post } from "../../components/post";
 import { useQuery } from "react-query";
 import { api } from "../../service/axios";
 
 export const FeedPage = () => {
-  const fetchFeed = api.get("/ocorrencias").then(ocorrencias=>ocorrencias.data)
-    
+  const fetchFeed = api
+    .get("/ocorrencias")
+    .then((ocorrencias) => ocorrencias.data);
+
   const { data: ocorrencias } = useQuery(
     "ocorrencias",
     async () => await fetchFeed
