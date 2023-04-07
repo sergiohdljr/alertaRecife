@@ -4,6 +4,7 @@ import { FeedPageStyles } from "./style";
 import { ReportarOcorrencia } from "../../components/reportarOcorrencia";
 import { useQuery } from "react-query";
 import { api } from "../../service/axios";
+import { Post } from "../../components/post";
 
 export const FeedPage = () => {
   const fetchFeed = api
@@ -27,20 +28,20 @@ export const FeedPage = () => {
             </form>
           </header>
           <ReportarOcorrencia />
-          {/* {ocorrencias &&
+          {ocorrencias && console.log(ocorrencias)}
+          {ocorrencias &&
             ocorrencias?.map((ocorrencia) => (
               <Post
-                key={ocorrencia.id}
-                descricaoDaOcorrencia={ocorrencia.descricaoDaOcorrencia}
-                fotoOcorrencia={ocorrencia.fotoOcorrencia}
-                displayName={ocorrencia.autor.nome}
-                email={ocorrencia.autor.email}
-                photoURL={ocorrencia.autor.fotoPerfil}
-                latitude={ocorrencia.latitude}
-                longitude={ocorrencia.longitude}
-                tipoOcorrencia={ocorrencia.tipoDaOcorrencia}
+                  key={ocorrencia.id}
+                  descricaoDaOcorrencia={ocorrencia.descricaoDaOcorrencia}
+                  tipoOcorrencia={ocorrencia.tipoDaOcorrencia}
+                  latitude={ocorrencia.latitude}
+                  longitude={ocorrencia.longitude}
+                  email={ocorrencia.autor.email}
+                  displayName={ocorrencia.autor.nome}
+                  photoURL={ocorrencia.autor.photoURL}
               />
-            ))} */}
+            ))}
         </section>
       </main>
     </FeedPageStyles>
