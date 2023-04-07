@@ -41,8 +41,7 @@ export const Post = ({
         <article>
           <p>{descricaoDaOcorrencia}</p>
           <p className="localizacao">
-            - aproximadamente em:
-            {localizacao?.map((loc) => loc.formatted_address)[5]}
+            - aproximadamente em: {localizacao?.map((loc) => loc.formatted_address)[5]}
           </p>
         </article>
       </div>

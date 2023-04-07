@@ -2,7 +2,6 @@ import { MagnifyingGlass } from "@phosphor-icons/react";
 import { Aside } from "../../components/aside";
 import { FeedPageStyles } from "./style";
 import { ReportarOcorrencia } from "../../components/reportarOcorrencia";
-import { Post } from "../../components/post";
 import { useQuery } from "react-query";
 import { api } from "../../service/axios";
 
@@ -28,7 +27,7 @@ export const FeedPage = () => {
             </form>
           </header>
           <ReportarOcorrencia />
-          {ocorrencias &&
+          {/* {ocorrencias &&
             ocorrencias?.map((ocorrencia) => (
               <Post
                 key={ocorrencia.id}
@@ -41,7 +40,7 @@ export const FeedPage = () => {
                 longitude={ocorrencia.longitude}
                 tipoOcorrencia={ocorrencia.tipoDaOcorrencia}
               />
-            ))}
+            ))} */}
         </section>
       </main>
     </FeedPageStyles>
