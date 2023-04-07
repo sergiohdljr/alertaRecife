@@ -2,15 +2,15 @@ import styled from "styled-components";
 
 export const AsideStyle = styled.aside`
   width: 18%;
-  height: 78vh;
+  height: 100vh;
   padding-left: 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   border-radius: 0.3rem;
-  background-color: ${({ theme }) => theme.branco};
+  background-color: ${({ theme }) => theme.cores.app};
   position: sticky;
-  top:0;
+  top: 0;
 
   a {
     display: flex;
@@ -20,24 +20,28 @@ export const AsideStyle = styled.aside`
     gap: 0.5rem;
     height: 40px;
     width: auto;
-    color: ${({ theme }) => theme.preto};
+    color: ${({ theme }) => theme.cores.texto};
 
     :hover {
       transition: 5ms all;
-      color: ${({ theme }) => theme.roxoEscuro};
+      color: ${({ theme }) => theme.cores.roxoEscuro};
     }
   }
 
   .signOutButton {
     all: unset;
     display: flex;
+    justify-content: start;
     align-items: center;
+    flex-wrap: wrap;
     gap: 0.5rem;
-    cursor: pointer;
+    height: 40px;
+    width: auto;
+    color: ${({ theme }) => theme.cores.texto};
 
     :hover {
       transition: 5ms all;
-      color: ${({ theme }) => theme.roxoEscuro};
+      color: ${({ theme }) => theme.cores.roxoEscuro};
     }
   }
 
@@ -77,7 +81,7 @@ export const AsideStyle = styled.aside`
       width: 90%;
       height: 40px;
       border-radius: 2rem;
-      background-color: ${({ theme }) => theme.roxoEscuro};
+      background-color: ${({ theme }) => theme.cores.roxoEscuro};
       color: white;
       font-size: 1rem;
       cursor: pointer;
@@ -101,10 +105,10 @@ export const AsideStyle = styled.aside`
     h5 {
       display: none;
     }
-    .signOutButton{
+    .signOutButton {
       align-self: center;
     }
-    
+
     div {
       width: 100%;
       display: flex;

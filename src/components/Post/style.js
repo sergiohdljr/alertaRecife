@@ -5,7 +5,7 @@ export const PostStyle = styled.div`
   height: fit-content;
   padding: 0.5rem;
   display: flex;
-  background-color: ${({ theme }) => theme.branco};
+  background-color: ${({ theme }) => theme.cores.app};
   border-radius: 0.3rem;
   gap: 0.5rem;
 
@@ -23,36 +23,37 @@ export const PostStyle = styled.div`
   }
 
   .content {
-    flex-grow:1;
+    flex-grow: 1;
     height: fit-content;
     display: flex;
     flex-direction: column;
     gap: 1rem;
 
     .user-info {
-      display:flex;
+      display: flex;
       justify-content: space-between;
       .user {
         h3 {
+          color: ${({ theme }) => theme.cores.texto};
           font-style: normal;
           font-weight: 400;
-          font-size: 16px;
+          font-size: 0.9rem;
           line-height: 20px;
         }
 
         p {
-          color: ${({ theme }) => theme.azulClaro};
+          color: ${({ theme }) => theme.cores.textoSecundario};
+          font-size: 0.8rem;
         }
       }
-      .tipoOcorrencia{
+      .tipoOcorrencia {
         display: flex;
         flex-direction: column;
-        align-items:center;
-        justify-content: space-between;
+        align-items: center;
 
-        p{
-          color:red;
-          font-size:0.8rem;
+        p {
+          color: red;
+          font-size: 0.8rem;
         }
       }
     }
@@ -65,10 +66,11 @@ export const PostStyle = styled.div`
 
       p {
         word-break: break-all;
+        color:${({ theme }) => theme.cores.texto};
       }
       .localizacao {
-        opacity: 85%;
-        color: gray;
+        opacity: 80%;
+        color: ${({ theme }) => theme.cores.textoSecundario};
       }
     }
   }

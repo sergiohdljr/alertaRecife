@@ -26,7 +26,6 @@ export const FeedPage = () => {
             </form>
           </header>
           <ReportarOcorrencia />
-          {/* {ocorrencias && console.log(ocorrencias)} */}
           {ocorrencias &&
             ocorrencias?.map((ocorrencia) => (
               <Post

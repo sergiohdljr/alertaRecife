@@ -7,7 +7,7 @@ export const ReportarOcorrenciaStyle = styled.form`
   height: 118px;
   padding: 0.3rem;
   border-radius: 0.3rem;
-  background-color: ${({ theme }) => theme.branco};
+  background-color: ${({ theme }) => theme.cores.app};
 
   figure {
     width: auto;
@@ -28,6 +28,7 @@ export const ReportarOcorrenciaStyle = styled.form`
 
     textarea {
       all: unset;
+      color: ${({ theme }) => theme.cores.texto};
       word-break: break-all;
     }
 
@@ -37,45 +38,42 @@ export const ReportarOcorrenciaStyle = styled.form`
       justify-content: space-between;
       flex-wrap: wrap;
 
-     
-
-      div{
+      div {
         display: flex;
         flex-wrap: wrap;
         gap: 0.3rem;
         justify-content: center;
         align-items: center;
-        
+
         label {
-        width: 80px;
-        height: 30px;
-        background-color: ${({ theme }) => theme.roxoEscuro};
-        border-radius: 2rem;
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 0.9rem;
-        cursor: pointer;
+          width: 80px;
+          height: 30px;
+          background-color: ${({ theme }) => theme.cores.roxoEscuro};
+          border-radius: 2rem;
+          color: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 0.9rem;
+          cursor: pointer;
 
-        :hover{
-            opacity:70%;
+          :hover {
+            opacity: 70%;
+          }
+
+          input[type="file"] {
+            display: none;
+          }
         }
-
-        input[type="file"] {
-          display: none;
-        }
-      }
-        select{
-        width: 80px;
-        height: 30px;
-        border: 2px  ${({ theme }) => theme.roxoEscuro} solid;
-        background-color: transparent;
-        color: ${({ theme }) => theme.roxoEscuro};
-        border-radius: 2rem;
-        font-weight: 400;
-        cursor: pointer;
-
+        select {
+          width: 80px;
+          height: 30px;
+          border: 2px ${({ theme }) => theme.cores.roxoEscuro} solid;
+          background-color: transparent;
+          color: ${({ theme }) => theme.cores.roxoEscuro};
+          border-radius: 2rem;
+          font-weight: 400;
+          cursor: pointer;
         }
       }
 
@@ -87,7 +85,7 @@ export const ReportarOcorrenciaStyle = styled.form`
       .alertar {
         width: 80px;
         height: 30px;
-        background-color: ${({ theme }) => theme.roxoEscuro};
+        background-color: ${({ theme }) => theme.cores.roxoEscuro};
         border-radius: 2rem;
         color: white;
         display: flex;
@@ -96,8 +94,8 @@ export const ReportarOcorrenciaStyle = styled.form`
         font-size: 0.9rem;
         cursor: pointer;
 
-        :hover{
-            opacity: 70%;
+        :hover {
+          opacity: 70%;
         }
       }
     }

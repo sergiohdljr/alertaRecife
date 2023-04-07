@@ -1,7 +1,8 @@
 import { AsideStyle } from "./style";
 import logo from "../../assets/logo.png";
-import {House,DeviceMobile,User,DotsThreeCircle,Siren,Users,SignOut,} from "@phosphor-icons/react";
+import {House,DeviceMobile,User,DotsThreeCircle,Siren,Users,SignOut, MoonStars,} from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
+import { UseTema } from "../../store";
 
 export const Aside = () => {
   const Usuario = JSON.parse(localStorage.getItem("user"));
@@ -11,6 +12,7 @@ export const Aside = () => {
     location.reload()
   }
 
+
   return (
     <AsideStyle>
       <img src={logo} alt="Logo Alerta Recife" width={"auto"} height={"auto"} />
@@ -18,7 +20,7 @@ export const Aside = () => {
       <div>
         <Link to={"/perfil"} rel="Ir para o perfil">
           <img
-            src={Usuario.photoURL || <Users size={16} /> }
+            src={Usuario.photoURL || <Users size={16} />}
             className="img-perfil"
             alt="foto de perfil do usuário"
           />
@@ -41,14 +43,35 @@ export const Aside = () => {
         <h3> Pefil</h3>
       </Link>
 
-      <button className="signOutButton" type="button" role={"button"} onClick={handleSignOutApp} >
-        <SignOut size={24} />
+      <button
+        className="signOutButton"
+        type="button"
+        role={"button"}
+        onClick={handleSignOutApp}
+      >
+        <SignOut size={26} />
+        <h3>Sair</h3>
+      </button>
+
+      <button
+        className="signOutButton"
+        type="button"
+        role={"button"}
+      >
+        <MoonStars size={26}  />
         <h3>Sair</h3>
       </button>
 
       <div className="button-div">
-        <button type="button" role={"button"} >Alertar</button>
-        <button type="button" role={"button"} title="Criar alerta" className="btn-mobile">
+        <button type="button" role={"button"}>
+          Alertar
+        </button>
+        <button
+          type="button"
+          role={"button"}
+          title="Criar alerta"
+          className="btn-mobile"
+        >
           <Siren size={24} />
         </button>
       </div>

@@ -1,14 +1,9 @@
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-  LoadScript,
-  useJsApiLoader,
-} from "@react-google-maps/api";
+import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { apiKey } from "../../apikey";
 import { Aside } from "../../components/aside";
 import { useQuery } from "react-query";
 import { api } from "../../service/axios";
+import { InputGoogle } from "./style";
 
 export const Map = () => {
   const position = { lat: -8.05428, lng: -34.8813 };
@@ -30,10 +25,17 @@ export const Map = () => {
   return isLoaded ? (
     <GoogleMap
       center={position}
-      zoom={8}
-      mapContainerStyle={{ width: "100%", height: "100vh" }}
+      zoom={12}
+      mapContainerStyle={{
+        width: "100%",
+        height: "100vh",
+        display: "flex",
+        gap: "3.5rem",
+      }}
     >
       <Aside />
+      <InputGoogle type="text" />
+
       {ocorrencias &&
         ocorrencias.map((ocorrencia) => (
           <Marker
@@ -48,9 +50,5 @@ export const Map = () => {
 };
 
 export const HomePage = () => {
-  return (
-    <div style={{ display: "flex" }}>
-      <Map />
-    </div>
-  );
+  return <Map />;
 };
