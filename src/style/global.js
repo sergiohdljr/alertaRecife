@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     margin:0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    transition: all 90ms ease-in-out;
 }
 
 a{

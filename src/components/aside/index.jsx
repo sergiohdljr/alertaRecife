@@ -1,6 +1,16 @@
 import { AsideStyle } from "./style";
 import logo from "../../assets/logo.png";
-import {House,DeviceMobile,User,DotsThreeCircle,Siren,Users,SignOut, MoonStars,} from "@phosphor-icons/react";
+import {
+  House,
+  DeviceMobile,
+  User,
+  DotsThreeCircle,
+  Siren,
+  Users,
+  SignOut,
+  MoonStars,
+  SunDim,
+} from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { UseTema } from "../../store";
 
@@ -8,11 +18,12 @@ export const Aside = () => {
   const Usuario = JSON.parse(localStorage.getItem("user"));
 
   const handleSignOutApp = () => {
-    localStorage.clear()
-    location.reload()
-  }
+    localStorage.clear();
+    location.reload();
+  };
 
-
+  const mudarTema = UseTema((state) => state.mudarTema);
+  const tema = UseTema((state) => state.tema.tema);
   return (
     <AsideStyle>
       <img src={logo} alt="Logo Alerta Recife" width={"auto"} height={"auto"} />
@@ -27,7 +38,6 @@ export const Aside = () => {
         </Link>
         <h3 className="h3-perfil">{Usuario.displayName} </h3>
       </div>
-
       <Link to={"/home"}>
         <House size={24} />
         <h3> Inicio</h3>
@@ -57,9 +67,9 @@ export const Aside = () => {
         className="signOutButton"
         type="button"
         role={"button"}
+        onClick={() => mudarTema()}
       >
-        <MoonStars size={26}  />
-        <h3>Sair</h3>
+        {tema === "claro" ? <MoonStars size={26} /> : <SunDim size={26} />}
       </button>
 
       <div className="button-div">

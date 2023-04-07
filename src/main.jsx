@@ -7,14 +7,13 @@ import { temaDark } from "./style/themes/darkTheme";
 import { RoutesApp } from "./router/routes";
 import { QueryClientProvider } from "react-query";
 import { client } from "./service/queryClient";
+import { App } from "./app";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <QueryClientProvider client={client}>
-      <ThemeProvider theme={temaDark} >
         <GlobalStyle />
-        <RoutesApp />
-      </ThemeProvider>
+        <App/>
     </QueryClientProvider>
   </React.StrictMode>
 );
