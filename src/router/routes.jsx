@@ -3,9 +3,7 @@ import { Login } from "../pages/Login";
 import { FeedPage } from "../pages/Feed";
 import { PerfilPage } from "../pages/Perfil";
 import { HomePage } from "../pages/Home";
-import { UseTema } from "../store";
-import { ThemeProvider } from "styled-components";
-import { temaLight } from "../style/themes/lightTheme";
+
 
 export const RoutesApp = () => {
   const UsuarioAuth = JSON.parse(localStorage.getItem("user"));

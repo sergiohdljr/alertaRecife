@@ -4,7 +4,7 @@ import { FeedPageStyles } from "./style";
 import { ReportarOcorrencia } from "../../components/reportarOcorrencia";
 import { useQuery } from "react-query";
 import { api } from "../../service/axios";
-import { Post } from "../../components/post/index";
+import { Post } from "../../components/post";
 
 export const FeedPage = () => {
   const fetchFeed = api
