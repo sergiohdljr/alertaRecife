@@ -38,7 +38,7 @@ export const FeedPage = () => {
                 longitude={ocorrencia.longitude}
                 email={ocorrencia.autor.email}
                 displayName={ocorrencia.autor.nome}
-                photoURL={ocorrencia.autor.photoURL}
+                photoURL={ocorrencia.autor.fotoPerfil}
               />
             ))}
         </section>

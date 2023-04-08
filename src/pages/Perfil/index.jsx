@@ -55,9 +55,7 @@ export const PerfilPage = () => {
                 <p>Local</p>
               </div>
             </div>
-            <section>
-              <h2>Ocorrencias</h2>
-            </section>
+              <h2 className="Ocorrencias">Ocorrencias</h2>
           </div>
           <section className="ocorrencias">
             {OcorrenciasDoUsuario &&

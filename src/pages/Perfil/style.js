@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const PerfilPageStyles = styled.div`
   width: 100%;
-  height: 100vh;
   background-color: ${({ theme }) => theme.cores.background};
   display: flex;
   gap: 0.5rem;
@@ -29,6 +28,10 @@ export const PerfilPageStyles = styled.div`
         gap: 0.3rem;
         padding: 0rem 0.5rem 0rem 0.5rem;
 
+        h2{
+          color:${({theme})=>theme.cores.roxoEscuro};
+        }
+         
         nav {
           background-color: ${({ theme }) => theme.cores.app};
           width: 100%;
@@ -129,7 +132,7 @@ export const PerfilPageStyles = styled.div`
     }
 
     section {
-      background-color: transparent;
+      background-color: ${({theme})=> theme.cores.background};
       display: flex;
       flex-direction: column;
       gap: 0.3rem;

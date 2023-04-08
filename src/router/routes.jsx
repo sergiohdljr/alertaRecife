@@ -4,14 +4,13 @@ import { FeedPage } from "../pages/Feed";
 import { PerfilPage } from "../pages/Perfil";
 import { HomePage } from "../pages/Home";
 
-
 export const RoutesApp = () => {
   const UsuarioAuth = JSON.parse(localStorage.getItem("user"));
-  
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={UsuarioAuth ? <FeedPage /> : <Login />} />
+        <Route path="/" element={UsuarioAuth ? <HomePage /> : <Login />} />
         <Route path="/home" element={UsuarioAuth ? <HomePage /> : <Login />} />
         <Route path="/feed" element={UsuarioAuth ? <FeedPage /> : <Login />} />
         <Route
