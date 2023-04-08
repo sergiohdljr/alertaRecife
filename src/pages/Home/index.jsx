@@ -1,6 +1,6 @@
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { apiKey } from "../../apikey";
-import { Aside } from "../../components/aside";
+import { Aside } from "../../components/Aside";
 import { useQuery } from "react-query";
 import { api } from "../../service/axios";
 import { InputGoogle } from "./style";
@@ -39,6 +39,7 @@ export const Map = () => {
       {ocorrencias &&
         ocorrencias.map((ocorrencia) => (
           <Marker
+            key={ocorrencia.id}
             position={{
               lat: parseFloat(ocorrencia.latitude),
               lng: parseFloat(ocorrencia.longitude),

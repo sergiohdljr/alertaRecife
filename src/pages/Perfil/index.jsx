@@ -1,11 +1,11 @@
 import { ArrowLeft } from "@phosphor-icons/react";
-import { Aside } from "../../components/aside";
+import { Aside } from "../../components/Aside";
 import { PerfilPageStyles } from "./style";
 import { MapPin } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { api } from "../../service/axios";
 import { useQuery } from "react-query";
-import { Post } from "../../components/post";
+import { Post } from "../../components/Post";
 
 export const PerfilPage = () => {
   const Usuario = JSON.parse(localStorage.getItem("user"));
@@ -34,7 +34,9 @@ export const PerfilPage = () => {
               </Link>
               <div className="user-ocorrencias-number">
                 <h3>{Usuario.displayName}</h3>
-                <p>({dadosUsuario?._count?.Ocorrencias} ocorrencias postadas)</p>
+                <p>
+                  ({dadosUsuario?._count?.Ocorrencias} ocorrencias postadas)
+                </p>
               </div>
             </nav>
             <div className="hero">

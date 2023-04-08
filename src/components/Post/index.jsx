@@ -11,7 +11,6 @@ export const Post = ({
   photoURL,
   displayName,
   email,
-  fotoOcorrencia,
   tipoOcorrencia,
 }) => {
   const [localizacao, setLocalizacao] = useState();
