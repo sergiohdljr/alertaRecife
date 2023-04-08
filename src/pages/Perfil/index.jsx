@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { api } from "../../service/axios";
 import { useQuery } from "react-query";
 import { Post } from "../../components/Post";
+import { UseSetModal } from "../../store";
+import { ModalOcorrencia } from "../../components/modal";
 
 export const PerfilPage = () => {
   const Usuario = JSON.parse(localStorage.getItem("user"));
@@ -21,9 +23,11 @@ export const PerfilPage = () => {
 
   const dadosUsuario = ocorrencias;
   const OcorrenciasDoUsuario = ocorrencias?.Ocorrencias;
+  const modalState = UseSetModal((state) => state.modal);
 
   return (
     <PerfilPageStyles>
+      {modalState ? <ModalOcorrencia /> : null}
       <main>
         <Aside />
         <div className="content">
@@ -55,7 +59,7 @@ export const PerfilPage = () => {
                 <p>Local</p>
               </div>
             </div>
-              <h2 className="Ocorrencias">Ocorrencias</h2>
+            <h2 className="Ocorrencias">Ocorrencias</h2>
           </div>
           <section className="ocorrencias">
             {OcorrenciasDoUsuario &&

@@ -12,7 +12,7 @@ import {
   SunDim,
 } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
-import { UseTema } from "../../store";
+import { UseSetModal, UseTema } from "../../store";
 
 export const Aside = () => {
   const Usuario = JSON.parse(localStorage.getItem("user"));
@@ -24,6 +24,10 @@ export const Aside = () => {
 
   const mudarTema = UseTema((state) => state.mudarTema);
   const tema = UseTema((state) => state.tema.tema);
+
+  const setModalOpen = UseSetModal((state) => state.openModal);
+  const modalState = UseSetModal((state) => state.modal);
+
   return (
     <AsideStyle>
       <img src={logo} alt="Logo Alerta Recife" width={"auto"} height={"auto"} />
@@ -31,7 +35,7 @@ export const Aside = () => {
       <div>
         <Link to={"/perfil"} rel="Ir para o perfil">
           <img
-            src={Usuario.photoURL || <Users size={16} />}
+            src={Usuario.photoURL}
             className="img-perfil"
             alt="foto de perfil do usuário"
           />
@@ -42,7 +46,6 @@ export const Aside = () => {
         <House size={24} />
         <h3> Inicio</h3>
       </Link>
-
       <Link to={"/feed"} rel="Ir para o feed">
         <DeviceMobile size={24} />
         <h3> Feed </h3>
@@ -73,7 +76,14 @@ export const Aside = () => {
       </button>
 
       <div className="button-div">
-        <button type="button" role={"button"}>
+        <button
+          type="button"
+          role={"button"}
+          onClick={() => {
+            setModal();
+            console.log(modalState);
+          }}
+        >
           Alertar
         </button>
         <button
@@ -81,6 +91,10 @@ export const Aside = () => {
           role={"button"}
           title="Criar alerta"
           className="btn-mobile"
+          onClick={() => {
+            setModalOpen();
+            console.log(modalState);
+          }}
         >
           <Siren size={24} />
         </button>

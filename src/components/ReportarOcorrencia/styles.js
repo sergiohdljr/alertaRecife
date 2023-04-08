@@ -4,7 +4,7 @@ export const ReportarOcorrenciaStyle = styled.form`
   display: flex;
   gap: 0.3rem;
   width: 100%;
-  height: 118px;
+  height: ${props=>props.modal ? "100%" : "153px" };
   padding: 0.3rem;
   border-radius: 0.3rem;
   background-color: ${({ theme }) => theme.cores.app};
