@@ -17,6 +17,7 @@ export const FeedPage = () => {
     ["ocorrencias"],
     async () => await fetchFeed
   );
+  
   const modalState = UseSetModal((state) => state.modal);
 
   return (

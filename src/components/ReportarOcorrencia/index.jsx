@@ -36,6 +36,7 @@ export const ReportarOcorrencia = () => {
         if (resp.status === 200) {
           closeModal();
           console.log(resp.status);
+          reset()
         }
       });
 
@@ -44,9 +45,7 @@ export const ReportarOcorrencia = () => {
   const postOcorrenciaMutate = useMutation({
     mutationFn: (dados) => postOcorrencia(dados),
     onSuccess: () => {
-      client.invalidateQueries({
-        queryKey: ["ocorrencias", "ocorrenciasUsuario", "ocorrenciasMapa"],
-      });
+      location.reload()
     },
   });
 
@@ -88,7 +87,7 @@ export const ReportarOcorrencia = () => {
               </select>
             </div>
             <button className="alertar" type="submit">
-              alertar
+             {postOcorrenciaMutate.isLoading ? 'alertando...': 'alertar'}
             </button>
           </div>
         </div>
