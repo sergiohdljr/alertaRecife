@@ -14,7 +14,7 @@ export const FeedPage = () => {
     .then((ocorrencias) => ocorrencias.data);
 
   const { data: ocorrencias } = useQuery(
-    "ocorrencias",
+    ["ocorrencias"],
     async () => await fetchFeed
   );
   const modalState = UseSetModal((state) => state.modal);

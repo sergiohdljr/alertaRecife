@@ -7,6 +7,7 @@ import { schemaPost } from "./schemaDeValidacao";
 import { api } from "../../service/axios";
 import { client } from "../../service/queryClient";
 import { UseSetModal } from "../../store";
+import { QueryClient, useMutation, useQueryClient } from "react-query";
 
 export const ReportarOcorrencia = () => {
   const Usuario = JSON.parse(localStorage.getItem("user"));
@@ -20,9 +21,8 @@ export const ReportarOcorrencia = () => {
     reset,
   } = useForm({ resolver: zodResolver(schemaPost) });
 
-
-  const onSubmit = async (dados) => {
-    const postOcorrencia = await api
+  const postOcorrencia = async (dados) =>
+    await api
       .post("/ocorrencia", {
         descricaoDaOcorrencia: dados.ocorrencia,
         tipoDaOcorrencia: dados.tipoOcorrencia,
@@ -34,10 +34,24 @@ export const ReportarOcorrencia = () => {
       })
       .then((resp) => {
         if (resp.status === 200) {
-          client.invalidateQueries({ queryKey: ["ocorrencias"] });
-          closeModal()
+          closeModal();
+          console.log(resp.status);
         }
       });
+
+  const client = useQueryClient();
+
+  const postOcorrenciaMutate = useMutation({
+    mutationFn: (dados) => postOcorrencia(dados),
+    onSuccess: () => {
+      client.invalidateQueries({
+        queryKey: ["ocorrencias", "ocorrenciasUsuario", "ocorrenciasMapa"],
+      });
+    },
+  });
+
+  const onSubmit = async (dados) => {
+    postOcorrenciaMutate.mutate(dados);
   };
 
   return (

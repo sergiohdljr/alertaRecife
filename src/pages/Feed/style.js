@@ -36,7 +36,7 @@ export const FeedPageStyles = styled.div`
         justify-content: center;
         align-items: center;
         gap: 0.5rem;
-        background-color: ${({theme})=>theme.cores.texto};
+        background-color: ${({theme})=>theme.cores.app};
         padding: 0rem 0.5rem 0rem 0.5rem;
 
         input {

@@ -20,8 +20,8 @@ export const Map = () => {
     .get("/ocorrencias")
     .then((ocorrencias) => ocorrencias.data);
 
-  const { data: ocorrencias } = useQuery(
-    "ocorrenciasMapa",
+  const { data: ocorrenciasMapa } = useQuery(
+    ["ocorrenciasMapa"],
     async () => await fetchFeed
   );
 
@@ -40,8 +40,8 @@ export const Map = () => {
       <Aside />
       <InputGoogle type="text" />
 
-      {ocorrencias &&
-        ocorrencias.map((ocorrencia) => (
+      {ocorrenciasMapa &&
+        ocorrenciasMapa.map((ocorrencia) => (
           <Marker
             key={ocorrencia.id}
             position={{

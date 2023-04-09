@@ -16,14 +16,14 @@ export const PerfilPage = () => {
     .get(`/ocorrencias/${Usuario.email}`)
     .then((ocorrencias) => ocorrencias.data);
 
-  const { data: ocorrencias } = useQuery(
-    "ocorrenciasUsuario",
+  const { data: ocorrenciasUsuario } = useQuery(
+    ["ocorrenciasUsuario"],
     async () => await fetchFeed
   );
 
-  const dadosUsuario = ocorrencias;
+  const dadosUsuario = ocorrenciasUsuario;
   const OcorrenciasDoUsuario =
-    ocorrencias?.Ocorrencias.slice(0).reverse();
+    ocorrenciasUsuario?.Ocorrencias.slice(0).reverse();
   const modalState = UseSetModal((state) => state.modal);
 
   return (
