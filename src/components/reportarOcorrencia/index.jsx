@@ -6,11 +6,12 @@ import { Erro, ReportarOcorrenciaStyle } from "./styles";
 import { schemaPost } from "./schemaDeValidacao";
 import { api } from "../../service/axios";
 import { client } from "../../service/queryClient";
+import { UseSetModal } from "../../store";
 
 export const ReportarOcorrencia = () => {
   const Usuario = JSON.parse(localStorage.getItem("user"));
-
   const { coords } = useGeolocated();
+  const closeModal = UseSetModal((state) => state.closeModal);
 
   const {
     register,
@@ -18,6 +19,7 @@ export const ReportarOcorrencia = () => {
     formState: { errors },
     reset,
   } = useForm({ resolver: zodResolver(schemaPost) });
+
 
   const onSubmit = async (dados) => {
     const postOcorrencia = await api
@@ -33,6 +35,7 @@ export const ReportarOcorrencia = () => {
       .then((resp) => {
         if (resp.status === 200) {
           client.invalidateQueries({ queryKey: ["ocorrencias"] });
+          closeModal()
         }
       });
   };

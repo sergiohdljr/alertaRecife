@@ -7,7 +7,7 @@ import { api } from "../../service/axios";
 import { useQuery } from "react-query";
 import { Post } from "../../components/Post";
 import { UseSetModal } from "../../store";
-import { ModalOcorrencia } from "../../components/modal";
+import { ModalOcorrencia } from "../../components/Modal";
 
 export const PerfilPage = () => {
   const Usuario = JSON.parse(localStorage.getItem("user"));
@@ -22,7 +22,8 @@ export const PerfilPage = () => {
   );
 
   const dadosUsuario = ocorrencias;
-  const OcorrenciasDoUsuario = ocorrencias?.Ocorrencias;
+  const OcorrenciasDoUsuario =
+    ocorrencias?.Ocorrencias.slice(0).reverse();
   const modalState = UseSetModal((state) => state.modal);
 
   return (

@@ -5,7 +5,7 @@ import { ReportarOcorrencia } from "../../components/ReportarOcorrencia";
 import { useQuery } from "react-query";
 import { api } from "../../service/axios";
 import { Post } from "../../components/Post";
-import { ModalOcorrencia } from "../../components/modal";
+import { ModalOcorrencia } from "../../components/Modal";
 import { UseSetModal } from "../../store";
 
 export const FeedPage = () => {
@@ -17,23 +17,26 @@ export const FeedPage = () => {
     "ocorrencias",
     async () => await fetchFeed
   );
- const modalState = UseSetModal((state) => state.modal);
+  const modalState = UseSetModal((state) => state.modal);
 
   return (
-      <FeedPageStyles>
-      { modalState ? <ModalOcorrencia/> : null }
-        <main>
-          <Aside />
-          <section>
-            <header>
-              <form action="">
-                <MagnifyingGlass size={16} />
-                <input type="text" placeholder="Digite sua localização" />
-              </form>
-            </header>
-            <ReportarOcorrencia />
-            {ocorrencias &&
-              ocorrencias?.map((ocorrencia) => (
+    <FeedPageStyles>
+      {modalState ? <ModalOcorrencia /> : null}
+      <main>
+        <Aside />
+        <section>
+          <header>
+            <form action="">
+              <MagnifyingGlass size={16} />
+              <input type="text" placeholder="Digite sua localização" />
+            </form>
+          </header>
+          <ReportarOcorrencia />
+          {ocorrencias &&
+            ocorrencias
+              .slice(0)
+              .reverse()
+              ?.map((ocorrencia) => (
                 <Post
                   key={ocorrencia.id}
                   descricaoDaOcorrencia={ocorrencia.descricaoDaOcorrencia}
@@ -45,8 +48,8 @@ export const FeedPage = () => {
                   photoURL={ocorrencia.autor.fotoPerfil}
                 />
               ))}
-          </section>
-        </main>
-      </FeedPageStyles>
+        </section>
+      </main>
+    </FeedPageStyles>
   );
 };

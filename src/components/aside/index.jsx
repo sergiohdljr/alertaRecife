@@ -81,7 +81,6 @@ export const Aside = () => {
           role={"button"}
           onClick={() => {
             setModal();
-            console.log(modalState);
           }}
         >
           Alertar
@@ -93,7 +92,6 @@ export const Aside = () => {
           className="btn-mobile"
           onClick={() => {
             setModalOpen();
-            console.log(modalState);
           }}
         >
           <Siren size={24} />

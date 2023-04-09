@@ -4,7 +4,7 @@ import { Aside } from "../../components/Aside";
 import { useQuery } from "react-query";
 import { api } from "../../service/axios";
 import { InputGoogle } from "./style";
-import { ModalOcorrencia } from "../../components/modal";
+import { ModalOcorrencia } from "../../components/Modal";
 import { UseSetModal } from "../../store";
 
 export const Map = () => {
