@@ -36,6 +36,7 @@ export const ReportarOcorrenciaStyle = styled.form`
       height: fit-content;
       display: flex;
       justify-content: space-between;
+      gap:0.3rem;
       flex-wrap: wrap;
 
       div {
@@ -56,7 +57,8 @@ export const ReportarOcorrenciaStyle = styled.form`
           align-items: center;
           font-size: 0.9rem;
           cursor: pointer;
-
+          opacity: 70%;
+          
           :hover {
             opacity: 70%;
           }

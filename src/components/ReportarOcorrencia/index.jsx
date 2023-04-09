@@ -77,13 +77,14 @@ export const ReportarOcorrencia = () => {
                   accept="img/png, img/jpeg"
                   {...register("ocorrenciaPhotoURL")}
                   id="ocorrenciaPhotoURL"
+                  disabled
                 />
               </label>
               <select {...register("tipoOcorrencia")} id="tipoOcorrencia">
                 <option value="Assalto">Assalto</option>
                 <option value="Assedio">Assedio</option>
                 <option value="Violencia">Violencia</option>
-                <option value="Acidente">Acidente</option>
+                <option value="Acidente">Transito</option>
               </select>
             </div>
             <button className="alertar" type="submit">

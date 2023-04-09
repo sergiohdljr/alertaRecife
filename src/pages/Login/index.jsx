@@ -26,7 +26,7 @@ export const Login = () => {
 
   return (
     <LoginPage>
-      <img src={Logo} alt="logo-alerta-recife" width={350} height={290} />
+      <img src={Logo} alt="logo-alerta-recife"/>
         <Link onClick={handleGoogleSignIn}>
           <GoogleLogo size={24} />
           Entrar com o Google
