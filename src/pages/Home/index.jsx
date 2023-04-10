@@ -14,7 +14,6 @@ import { UseSetModal } from "../../store";
 import usePlacesAutocomplete, { getGeocode } from "use-places-autocomplete";
 import { getLatLng } from "react-places-autocomplete";
 import { useState } from "react";
-import { PinterestLogo } from "@phosphor-icons/react";
 
 export const Map = () => {
   const position = { lat: -8.05428, lng: -34.8813 };
@@ -81,15 +80,6 @@ export const Map = () => {
   ) : null;
 };
 
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  width="20"
-  height="20"
-  fill="#fafafa"
-  viewBox="0 0 256 256"
->
-  <path d="Z"></path>
-</svg>;
 
 export const HomePage = () => {
   return <Map />;
@@ -133,11 +123,11 @@ const PlacesAutoComplete = ({ setSelect }) => {
         onChange={(e) => setValue(e.target.value)}
         disabled={!ready}
       />
-      <div style={{ backgroundColor: "white" }}>
+      <div style={{ backgroundColor: "white", padding: "0.3rem" }}>
         {status === "OK" &&
           data.map(({ place_id, description }) => {
             return (
-              <p onClick={(e) => onSelected(description)} key={place_id}>
+              <p style={{height:"3rem", display:"flex" , alignItems:"center"}} onClick={(e) => onSelected(description)} key={place_id}>
                 {description}
               </p>
             );
