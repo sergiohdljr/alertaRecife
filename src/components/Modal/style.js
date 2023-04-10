@@ -7,7 +7,7 @@ export const Modal = styled.div`
   position: absolute;
   left: 0;
   bottom: 0;
-  z-index: 1;
+  z-index: 999;
   width: 100%;
   height: 100%;
   overflow: auto;
