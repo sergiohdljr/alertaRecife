@@ -5,6 +5,8 @@ import { QueryClientProvider } from "react-query";
 import { client } from "./service/queryClient";
 import { App } from "./app";
 
+
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <QueryClientProvider client={client}>

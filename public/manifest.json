@@ -1,0 +1,68 @@
+{
+  "background_color": "#8b3dff",
+  "description": "pwa alerta recife",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "alerta-recife.vercel",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "alerta-recife.vercel",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "categories": [],
+  "screenshots": [],
+  "icons": [
+    {
+      "src": "/assets/128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "/assets/144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "/assets/152.png",
+      "type": "image/png",
+      "sizes": "152x152"
+    },
+    {
+      "src": "/assets/167.png",
+      "type": "image/png",
+      "sizes": "167x167"
+    },
+    {
+      "src": "/assets/172.png",
+      "type": "image/png",
+      "sizes": "172x172"
+    },
+    {
+      "src": "/assets/180.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "/assets/196.png",
+      "type": "image/png",
+      "sizes": "196x196"
+    },
+    {
+      "src": "/assets/216.png",
+      "type": "image/png",
+      "sizes": "216x216"
+    },
+    {
+      "src": "/assets/256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "/assets/512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "shortcuts": [],
+  "prefer_related_applications": true
+}
