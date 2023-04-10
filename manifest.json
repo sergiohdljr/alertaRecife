@@ -1,16 +1,11 @@
 {
   "background_color": "#8b3dff",
   "description": "pwa alerta recife",
-  "dir": "ltr",
   "display": "standalone",
   "name": "alerta-recife.vercel",
-  "orientation": "any",
-  "scope": "/",
   "short_name": "alerta-recife.vercel",
   "start_url": "../index.html",
   "theme_color": "#ffffff",
-  "categories": [],
-  "screenshots": [],
   "icons": [
     {
       "src": "./public/icones/128.png",
@@ -64,6 +59,5 @@
       "sizes": "512x512"
     }
   ],
-  "shortcuts": [],
-  "prefer_related_applications": true
+  "prefer_related_applications": false
 }
