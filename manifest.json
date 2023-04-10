@@ -4,7 +4,7 @@
   "display": "standalone",
   "name": "alerta-recife.vercel",
   "short_name": "alerta-recife.vercel",
-  "start_url": "../index.html",
+  "start_url": "./index.html",
   "theme_color": "#ffffff",
   "icons": [
     {
@@ -13,48 +13,48 @@
       "sizes": "128x128"
     },
     {
-      "src": "./public/icones/144.png",
+      "src": "./icones/144.png",
       "type": "image/png",
       "sizes": "144x144",
       "purpose": "any maskable"
     },
     {
-      "src": "./public/icones/152.png",
+      "src": "./icones/152.png",
       "type": "image/png",
       "sizes": "152x152"
     },
     {
-      "src": "./public/icones/167.png",
+      "src": "./icones/167.png",
       "type": "image/png",
       "sizes": "167x167"
     },
     {
-      "src": "./public/icones/172.png",
+      "src": "./icones/172.png",
       "type": "image/png",
       "sizes": "172x172"
     },
     {
-      "src": "./public/icones/180.png",
+      "src": "./icones/180.png",
       "type": "image/png",
       "sizes": "180x180"
     },
     {
-      "src": "./public/icones/196.png",
+      "src": "./icones/196.png",
       "type": "image/png",
       "sizes": "196x196"
     },
     {
-      "src": "./public/icones/216.png",
+      "src": "./icones/216.png",
       "type": "image/png",
       "sizes": "216x216"
     },
     {
-      "src": "./public/icones/256.png",
+      "src": "./icones/256.png",
       "type": "image/png",
       "sizes": "256x256"
     },
     {
-      "src": "./public/icones/152.png",
+      "src": "./icones/152.png",
       "type": "image/png",
       "sizes": "512x512"
     }
