@@ -4,7 +4,7 @@
   "display": "standalone",
   "name": "alerta-recife.vercel",
   "short_name": "alerta-recife.vercel",
-  "start_url": "/",
+  "start_url": "index.html",
   "theme_color": "#8b3dff",
   "icons": [
     {
@@ -16,6 +16,7 @@
       "src": "icones/144.png",
       "type": "image/png",
       "sizes": "144x144"
+      
     },
     {
       "src": "icones/152.png",
