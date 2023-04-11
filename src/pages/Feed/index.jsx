@@ -42,8 +42,7 @@ export const FeedPage = () => {
                   key={ocorrencia.id}
                   descricaoDaOcorrencia={ocorrencia.descricaoDaOcorrencia}
                   tipoOcorrencia={ocorrencia.tipoDaOcorrencia}
-                  latitude={ocorrencia.latitude}
-                  longitude={ocorrencia.longitude}
+                  enderecoOcorrencia={ocorrencia.enderecoOcorrencia}
                   email={ocorrencia.autor.email}
                   displayName={ocorrencia.autor.nome}
                   photoURL={ocorrencia.autor.fotoPerfil}

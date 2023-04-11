@@ -6,20 +6,12 @@ import { Siren } from "@phosphor-icons/react";
 
 export const Post = ({
   descricaoDaOcorrencia,
-  latitude,
-  longitude,
+  enderecoOcorrencia,
   photoURL,
   displayName,
   email,
   tipoOcorrencia,
 }) => {
-  const [localizacao, setLocalizacao] = useState();
-
-  useEffect(() => {
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`)
-      .then((res) => res.json())
-      .then((loc) => setLocalizacao(loc.results));
-  }, []);
 
   return (
     <PostStyle>
@@ -40,7 +32,7 @@ export const Post = ({
         <article>
           <p>{descricaoDaOcorrencia}</p>
           <p className="localizacao">
-            - aproximadamente em: {localizacao?.map((loc) => loc.formatted_address)[5]}
+            - aproximadamente em: {enderecoOcorrencia}
           </p>
         </article>
       </div>

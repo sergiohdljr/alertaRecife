@@ -35,6 +35,16 @@ export const Map = () => {
     async () => await fetchFeed
   );
 
+  const pinLoc = async (endereco) => {
+    const address = endereco;
+    const results = await getGeocode({ address });
+
+    const localizacao = await getLatLng(results[0]);
+
+    return  localizacao
+  };
+
+
   return isLoaded ? (
     <GoogleMap
       center={position}
@@ -54,32 +64,27 @@ export const Map = () => {
           position={selected}
           options={{
             title: "você",
-            label:{
-              text: "você"
-            }
+            label: {
+              text: "você",
+            },
           }}
         />
       )}
       {ocorrenciasMapa &&
-        ocorrenciasMapa.map((ocorrencia) => (
+        ocorrenciasMapa.map(async (ocorrencia) => {
+          const pos = await pinLoc(ocorrencia.enderecoOcorrencia)
+        return(
           <Marker
             key={ocorrencia.id}
-            title={ocorrencia.descricaoDaOcorrencia}
-            options={{
-              label:{
-                text: ocorrencia.descricaoDaOcorrencia
-              }
-            }}
             position={{
-              lat: parseFloat(ocorrencia.latitude),
-              lng: parseFloat(ocorrencia.longitude),
+              lat: pos.lat,
+              lng: pos.lng
             }}
           />
-        ))}
+        )})}
     </GoogleMap>
   ) : null;
 };
-
 
 export const HomePage = () => {
   return <Map />;
@@ -112,7 +117,7 @@ const PlacesAutoComplete = ({ setSelect }) => {
         type="text"
         placeholder="Digite sua localização"
         style={{
-          backgroundColor:"white",
+          backgroundColor: "white",
           color: "black",
           zIndex: 100,
           height: "40px",
@@ -127,7 +132,15 @@ const PlacesAutoComplete = ({ setSelect }) => {
         {status === "OK" &&
           data.map(({ place_id, description }) => {
             return (
-              <p style={{height:"3rem", display:"flex" , alignItems:"center"}} onClick={(e) => onSelected(description)} key={place_id}>
+              <p
+                style={{
+                  height: "3rem",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+                onClick={(e) => onSelected(description)}
+                key={place_id}
+              >
                 {description}
               </p>
             );

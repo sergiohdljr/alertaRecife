@@ -72,8 +72,7 @@ export const PerfilPage = () => {
                   displayName={dadosUsuario.nome}
                   email={dadosUsuario.email}
                   photoURL={dadosUsuario.fotoPerfil}
-                  latitude={ocorrencia.latitude}
-                  longitude={ocorrencia.longitude}
+                  enderecoOcorrencia={ocorrencia.enderecoOcorrencia}
                   tipoOcorrencia={ocorrencia.tipoDaOcorrencia}
                 />
               ))}

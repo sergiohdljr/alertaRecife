@@ -24,6 +24,7 @@ export const ReportarOcorrenciaStyle = styled.form`
   .text-area-icons {
     flex-grow: 1;
     display: flex;
+    gap: 0.4rem;
     flex-direction: column;
 
     textarea {
