@@ -45,7 +45,7 @@ export const Map = () => {
   };
 
 
-  return isLoaded ? (
+  return isLoaded && (
     <GoogleMap
       center={position}
       zoom={15}
@@ -70,7 +70,7 @@ export const Map = () => {
           }}
         />
       )}
-      {ocorrenciasMapa &&
+      {/* {ocorrenciasMapa &&
         ocorrenciasMapa.map(async (ocorrencia) => {
           const pos = await pinLoc(ocorrencia.enderecoOcorrencia)
         return(
@@ -81,9 +81,9 @@ export const Map = () => {
               lng: pos.lng
             }}
           />
-        )})}
+        )})} */}
     </GoogleMap>
-  ) : null;
+  )
 };
 
 export const HomePage = () => {
