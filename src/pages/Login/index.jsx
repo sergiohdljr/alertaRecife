@@ -1,5 +1,5 @@
 import { LoginPage } from "./style";
-import Logo3 from "../../assets/logo3.png";
+import logo_resized from "../../assets/logo_resized.png";
 import { GoogleLogo } from "@phosphor-icons/react";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../service/firebase";
@@ -26,7 +26,7 @@ export const Login = () => {
 
   return (
     <LoginPage>
-      <img src={Logo3} alt="logo-alerta-recife"/>
+      <img src={logo_resized} alt="logo-alerta-recife"/>
         <Link onClick={handleGoogleSignIn}>
           <GoogleLogo size={24} />
           Entrar com o Google
