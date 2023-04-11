@@ -15,8 +15,7 @@
     {
       "src": "icones/144.png",
       "type": "image/png",
-      "sizes": "144x144",
-      "purpose": "any maskable"
+      "sizes": "144x144"
     },
     {
       "src": "icones/152.png",
@@ -41,7 +40,8 @@
     {
       "src": "icones/196.png",
       "type": "image/png",
-      "sizes": "196x196"
+      "sizes": "196x196",
+      "purpose": "any maskable"
     },
     {
       "src": "icones/216.png",
