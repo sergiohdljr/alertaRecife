@@ -2,7 +2,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Images } from "@phosphor-icons/react";
 import { useGeolocated } from "react-geolocated";
 import { useForm } from "react-hook-form";
-import { Erro, ReportarOcorrenciaStyle } from "./styles";
+import {
+  Erro,
+  InputCompleteEndereco,
+  ReportarOcorrenciaStyle,
+  SuggestionsAutoComplete,
+} from "./styles";
 import { schemaPost } from "./schemaDeValidacao";
 import { api } from "../../service/axios";
 import { client } from "../../service/queryClient";
@@ -90,32 +95,22 @@ export const ReportarOcorrencia = () => {
           />
           {isLoaded ? (
             <div>
-              <input
-                style={{ width: "100%", padding: "0.2rem" }}
+              <InputCompleteEndereco
+                placeholder={ready ? "Digite o endereço": "carrengando..." }
                 onChange={(e) => setValue(e.target.value)}
                 disabled={!ready}
                 value={value}
               />
-              <div
-                style={{
-                  position: "absolute",
-                  padding: "0.3rem",
-                  width: "262px",
-                  zIndex: "99999",
-                  height: "fit-content",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
+              <SuggestionsAutoComplete>
                 {status === "OK" &&
                   data.map(({ place_id, description }) => {
                     return (
                       <p
                         style={{
+                          fontSize: "0.8rem",
                           height: "2rem",
                           display: "flex",
                           alignItems: "center",
-                          backgroundColor: "white",
                           zIndex: "9999",
                           padding: "0.2rem",
                         }}
@@ -126,7 +121,7 @@ export const ReportarOcorrencia = () => {
                       </p>
                     );
                   })}
-              </div>
+              </SuggestionsAutoComplete>
             </div>
           ) : null}
           <div className="btns">

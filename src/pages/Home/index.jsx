@@ -14,6 +14,8 @@ import { UseSetModal } from "../../store";
 import usePlacesAutocomplete, { getGeocode } from "use-places-autocomplete";
 import { getLatLng } from "react-places-autocomplete";
 import { useState } from "react";
+import { useTheme } from "styled-components";
+import { InputAutoComplete, SuggestionsList } from "./style";
 
 export const Map = () => {
   const position = { lat: -8.05428, lng: -34.8813 };
@@ -70,18 +72,7 @@ export const Map = () => {
           }}
         />
       )}
-      {/* {ocorrenciasMapa &&
-        ocorrenciasMapa.map(async (ocorrencia) => {
-          const pos = await pinLoc(ocorrencia.enderecoOcorrencia)
-        return(
-          <Marker
-            key={ocorrencia.id}
-            position={{
-              lat: pos.lat,
-              lng: pos.lng
-            }}
-          />
-        )})} */}
+     
     </GoogleMap>
   )
 };
@@ -111,24 +102,17 @@ const PlacesAutoComplete = ({ setSelect }) => {
     setSelect({ lat, lng });
   };
 
+  const { theme } = useTheme;
+
   return (
     <div style={{ zIndex: 90 }}>
-      <input
+      <InputAutoComplete
         type="text"
         placeholder="Digite sua localização"
-        style={{
-          backgroundColor: "white",
-          color: "black",
-          zIndex: 100,
-          height: "40px",
-          width: "200px",
-          marginTop: "3.5rem",
-          padding: "1rem",
-        }}
         onChange={(e) => setValue(e.target.value)}
         disabled={!ready}
       />
-      <div style={{ backgroundColor: "white", padding: "0.3rem" }}>
+      <SuggestionsList>
         {status === "OK" &&
           data.map(({ place_id, description }) => {
             return (
@@ -137,6 +121,8 @@ const PlacesAutoComplete = ({ setSelect }) => {
                   height: "3rem",
                   display: "flex",
                   alignItems: "center",
+                  fontSize: "0.8rem",
+                  padding: "0.3rem"
                 }}
                 onClick={(e) => onSelected(description)}
                 key={place_id}
@@ -145,7 +131,7 @@ const PlacesAutoComplete = ({ setSelect }) => {
               </p>
             );
           })}
-      </div>
+      </SuggestionsList>
     </div>
   );
 };

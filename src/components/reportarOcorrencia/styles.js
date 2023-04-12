@@ -4,7 +4,7 @@ export const ReportarOcorrenciaStyle = styled.form`
   display: flex;
   gap: 0.3rem;
   width: 100%;
-  height: ${props=>props.modal ? "100%" : "153px" };
+  height: ${(props) => (props.modal ? "100%" : "153px")};
   padding: 0.3rem;
   border-radius: 0.3rem;
   background-color: ${({ theme }) => theme.cores.app};
@@ -37,7 +37,7 @@ export const ReportarOcorrenciaStyle = styled.form`
       height: fit-content;
       display: flex;
       justify-content: space-between;
-      gap:0.3rem;
+      gap: 0.3rem;
       flex-wrap: wrap;
 
       div {
@@ -59,7 +59,7 @@ export const ReportarOcorrenciaStyle = styled.form`
           font-size: 0.9rem;
           cursor: pointer;
           opacity: 70%;
-          
+
           :hover {
             opacity: 70%;
           }
@@ -108,4 +108,26 @@ export const ReportarOcorrenciaStyle = styled.form`
 export const Erro = styled.p`
   color: red;
   font-size: 0.9rem;
+`;
+
+export const InputCompleteEndereco = styled.input`
+  border-radius: 0.5rem;
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+  background-color: ${({ theme }) => theme.cores.app};
+  color: ${({ theme }) => theme.cores.texto};
+  margin-bottom: 0.6rem;
+`;
+
+export const SuggestionsAutoComplete = styled.div`
+  background-color: ${({ theme }) => theme.cores.app};
+  color: ${({ theme }) => theme.cores.texto};
+  position: absolute;
+  width: 262px;
+  z-index: 99999;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
 `;
