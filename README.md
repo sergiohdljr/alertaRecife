@@ -29,8 +29,6 @@
 
 ## Colaboradores
 
-- Scarllet Valentim: https://github.com/scarlletrvs
-- Sergio Henrique de Lima Jr.: https://github.com/sergiohdljr
-- Matheus Guilherme: https://github.com/MatheusGSR
-- Kevyn Santos: https://github.com/KevynSantos23
-- Alex Santos: https://github.com/AlexKEKW
+| <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/102623806?v=4" width="120px;" alt="Sérgio H. de Lima Jr."/> | <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/125518211?v=4" width="120px;" alt="Scarllet Valentim"/> |  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/60006415?v=4" width="120px;" alt="Matheus"/> | <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/110067323?v=4" width="120px;" alt="Kevyn"/>  | <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/91097515?v=4" width="120px;" alt="Alex"/> 
+
+| [Sérgio de Lima Jr.](https://github.com/sergiohdljr) | [Scarllet Valentim](https://github.com/) | [Matheus Guilherme](https://github.com/MatheusGSR) | [Kevyn Santos](https://github.com/KevynSantos23) | [Alex Santos](https://github.com/AlexKEKW)
