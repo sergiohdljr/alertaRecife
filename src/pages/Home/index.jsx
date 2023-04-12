@@ -14,7 +14,6 @@ import { UseSetModal } from "../../store";
 import usePlacesAutocomplete, { getGeocode } from "use-places-autocomplete";
 import { getLatLng } from "react-places-autocomplete";
 import { useState } from "react";
-import { useTheme } from "styled-components";
 import { InputAutoComplete, SuggestionsList } from "./style";
 
 export const Map = () => {

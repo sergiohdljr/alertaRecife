@@ -7,6 +7,7 @@ import { api } from "../../service/axios";
 import { Post } from "../../components/Post";
 import { ModalOcorrencia } from "../../components/Modal";
 import { UseSetModal } from "../../store";
+import { useState } from "react";
 
 export const FeedPage = () => {
   const fetchFeed = api
@@ -17,9 +18,9 @@ export const FeedPage = () => {
     ["ocorrencias"],
     async () => await fetchFeed
   );
-  
-  const modalState = UseSetModal((state) => state.modal);
 
+  const modalState = UseSetModal((state) => state.modal);
+  const [busca, setBusca] = useState("");
   return (
     <FeedPageStyles>
       {modalState ? <ModalOcorrencia /> : null}
@@ -29,7 +30,11 @@ export const FeedPage = () => {
           <header>
             <form action="">
               <MagnifyingGlass size={16} />
-              <input type="text" placeholder="Digite sua localização" />
+              <input
+                type="text"
+                placeholder="Digite sua localização"
+                onChange={(e) => setBusca(e.target.value)}
+              />
             </form>
           </header>
           <ReportarOcorrencia />
@@ -37,6 +42,11 @@ export const FeedPage = () => {
             ocorrencias
               .slice(0)
               .reverse()
+              .filter(({ enderecoOcorrencia }) => {
+                const valorBusca = busca.toLowerCase();
+                const filtro = enderecoOcorrencia?.toLowerCase();
+                return filtro.includes(valorBusca);
+              })
               ?.map((ocorrencia) => (
                 <Post
                   key={ocorrencia.id}
