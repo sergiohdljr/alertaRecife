@@ -12,7 +12,7 @@ import { schemaPost } from "./schemaDeValidacao";
 import { api } from "../../service/axios";
 import { client } from "../../service/queryClient";
 import { UseSetModal } from "../../store";
-import { QueryClient, useMutation, useQueryClient } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { useJsApiLoader } from "@react-google-maps/api";
 import { apiKey } from "../../apikey";
 import usePlacesAutocomplete from "use-places-autocomplete";
