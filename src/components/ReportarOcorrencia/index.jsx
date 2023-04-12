@@ -2,15 +2,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Images } from "@phosphor-icons/react";
 import { useGeolocated } from "react-geolocated";
 import { useForm } from "react-hook-form";
-import {
-  Erro,
-  InputEndereco,
-  ReportarOcorrenciaStyle,
-  SuggestionsAutoComplete,
-} from "./styles";
+import { Erro,InputEndereco,ReportarOcorrenciaStyle,SuggestionsAutoComplete,} from "./styles";
 import { schemaPost } from "./schemaDeValidacao";
 import { api } from "../../service/axios";
-import { client } from "../../service/queryClient";
 import { UseSetModal } from "../../store";
 import { useMutation, useQueryClient } from "react-query";
 import { useJsApiLoader } from "@react-google-maps/api";
