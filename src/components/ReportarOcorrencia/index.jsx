@@ -4,7 +4,7 @@ import { useGeolocated } from "react-geolocated";
 import { useForm } from "react-hook-form";
 import {
   Erro,
-  InputCompleteEndereco,
+  InputEndereco,
   ReportarOcorrenciaStyle,
   SuggestionsAutoComplete,
 } from "./styles";
@@ -95,8 +95,8 @@ export const ReportarOcorrencia = () => {
           />
           {isLoaded ? (
             <div>
-              <InputCompleteEndereco
-                placeholder={ready ? "Digite o endereço": "carrengando..." }
+              <InputEndereco
+                placeholder={ready ? "Digite o endereço" : "carrengando..."}
                 onChange={(e) => setValue(e.target.value)}
                 disabled={!ready}
                 value={value}

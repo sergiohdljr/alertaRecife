@@ -43,38 +43,38 @@ export const Map = () => {
 
     const localizacao = await getLatLng(results[0]);
 
-    return  localizacao
+    return localizacao;
   };
 
-
-  return isLoaded && (
-    <GoogleMap
-      center={position}
-      zoom={15}
-      mapContainerStyle={{
-        width: "100%",
-        height: "100vh",
-        display: "flex",
-        gap: "3.5rem",
-      }}
-    >
-      {modalState ? <ModalOcorrencia /> : null}
-      <Aside />
-      <PlacesAutoComplete setSelect={setSelected} />
-      {selected && (
-        <Marker
-          position={selected}
-          options={{
-            title: "você",
-            label: {
-              text: "você",
-            },
-          }}
-        />
-      )}
-     
-    </GoogleMap>
-  )
+  return (
+    isLoaded && (
+      <GoogleMap
+        center={position}
+        zoom={15}
+        mapContainerStyle={{
+          width: "100%",
+          height: "100vh",
+          display: "flex",
+          gap: "3.5rem",
+        }}
+      >
+        {modalState ? <ModalOcorrencia /> : null}
+        <Aside />
+        <PlacesAutoComplete setSelect={setSelected} />
+        {selected && (
+          <Marker
+            position={selected}
+            options={{
+              title: "você",
+              label: {
+                text: "você",
+              },
+            }}
+          />
+        )}
+      </GoogleMap>
+    )
+  );
 };
 
 export const HomePage = () => {
@@ -101,9 +101,6 @@ const PlacesAutoComplete = ({ setSelect }) => {
 
     setSelect({ lat, lng });
   };
-
-  const { theme } = useTheme;
-
   return (
     <div style={{ zIndex: 90 }}>
       <InputAutoComplete
@@ -122,7 +119,7 @@ const PlacesAutoComplete = ({ setSelect }) => {
                   display: "flex",
                   alignItems: "center",
                   fontSize: "0.8rem",
-                  padding: "0.3rem"
+                  padding: "0.3rem",
                 }}
                 onClick={(e) => onSelected(description)}
                 key={place_id}
