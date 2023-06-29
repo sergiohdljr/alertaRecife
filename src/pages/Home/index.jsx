@@ -6,10 +6,9 @@ import {
   LoadScript,
 } from "@react-google-maps/api";
 import { apiKey } from "../../apikey";
-import { Aside } from "../../components/Aside";
+import { Aside,ModalOcorrencia } from "../../components/";
 import { useQuery } from "react-query";
 import { api } from "../../service/axios";
-import { ModalOcorrencia } from "../../components/Modal";
 import { UseSetModal } from "../../store";
 import usePlacesAutocomplete, { getGeocode } from "use-places-autocomplete";
 import { getLatLng } from "react-places-autocomplete";
