@@ -1,9 +1,5 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Login } from "../pages/Login";
-import { FeedPage } from "../pages/Feed";
-import { PerfilPage } from "../pages/Perfil";
-import { HomePage } from "../pages/Home";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {  FeedPage, HomePage,Login,PerfilPage } from '../pages'
 export const RoutesApp = () => {
   const UsuarioAuth = JSON.parse(localStorage.getItem("user"));
 

@@ -1,11 +1,8 @@
 import { MagnifyingGlass } from "@phosphor-icons/react";
-import { Aside } from "../../components/Aside";
+import { Aside, ModalOcorrencia, ReportarOcorrencia, Post } from "../../components/";
 import { FeedPageStyles } from "./style";
-import { ReportarOcorrencia } from "../../components/ReportarOcorrencia";
 import { useQuery } from "react-query";
 import { api } from "../../service/axios";
-import { Post } from "../../components/Post";
-import { ModalOcorrencia } from "../../components/Modal";
 import { UseSetModal } from "../../store";
 import { useState } from "react";
 

@@ -1,6 +1,5 @@
 import { create } from "zustand";
-import { temaLight } from "../style/themes/lightTheme";
-import { temaDark } from "../style/themes/darkTheme";
+import { temaDark,temaLight  } from '../style'
 
 export const UseTema = create((set) => ({
   tema: temaLight,
