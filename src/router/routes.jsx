@@ -1,18 +1,22 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FeedPage, HomePage, Login, PerfilPage, Register } from "../pages";
-import { PrivateRoute } from "./PrivateRoute";
 import { createBrowserHistory } from "history";
+import { Context } from "../context/authContext";
+import { useContext } from "react";
 
 export const history = createBrowserHistory();
 export const RoutesApp = () => {
-  const UsuarioAuth = JSON.parse(localStorage.getItem("user"));
+  const PrivateRoute = ({ children }) => {
+    const { authenticated, loading } = useContext(Context);
+
+    return authenticated ? children : <Login />;
+  };
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/home" element={UsuarioAuth ? <HomePage /> : <Login />} />
         <Route
           path="/feed"
           element={
@@ -23,7 +27,11 @@ export const RoutesApp = () => {
         />
         <Route
           path="/perfil"
-          element={UsuarioAuth ? <PerfilPage /> : <Login />}
+          element={
+            <PrivateRoute>
+              <PerfilPage />
+            </PrivateRoute>
+          }
         />
       </Routes>
     </BrowserRouter>
