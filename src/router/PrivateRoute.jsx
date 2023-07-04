@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { Context } from "../context/authContext";
-import { Login } from "../pages";
+import { FeedPage, Login } from "../pages";
 
 export const PrivateRoute = ({ children }) => {
-  const { authenticated } = useContext(Context);
+  const { authenticated, loading } = useContext(Context);
 
-  return !authenticated ? <Login /> : children;
+  return authenticated ? children : <Login />;
 };

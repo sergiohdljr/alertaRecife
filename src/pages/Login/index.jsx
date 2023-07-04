@@ -11,14 +11,14 @@ import {
 import { useForm } from "react-hook-form";
 import { Context } from "../../context/authContext";
 import { useContext } from "react";
+import { redirect } from "react-router-dom";
 
-export const Login = ({ history }) => {
+export const Login = () => {
   const { authenticated, handleLogin } = useContext(Context);
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data) => {
     await handleLogin(data.email, data.senha);
-    history.push("/feed");
   };
 
   return (

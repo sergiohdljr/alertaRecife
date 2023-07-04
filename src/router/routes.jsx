@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FeedPage, HomePage, Login, PerfilPage, Register } from "../pages";
 import { PrivateRoute } from "./PrivateRoute";
+import { createBrowserHistory } from "history";
 
+export const history = createBrowserHistory();
 export const RoutesApp = () => {
   const UsuarioAuth = JSON.parse(localStorage.getItem("user"));
 
