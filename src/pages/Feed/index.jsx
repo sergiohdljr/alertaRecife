@@ -18,6 +18,7 @@ export const FeedPage = () => {
 
   const modalState = UseSetModal((state) => state.modal);
   const [busca, setBusca] = useState("");
+  
   return (
     <FeedPageStyles>
       {modalState ? <ModalOcorrencia /> : null}

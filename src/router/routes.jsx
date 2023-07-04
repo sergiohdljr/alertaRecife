@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {  FeedPage, HomePage,Login,PerfilPage, Register } from '../pages'
+import { FeedPage, HomePage, Login, PerfilPage, Register } from "../pages";
+import { PrivateRoute } from "./PrivateRoute";
 
 export const RoutesApp = () => {
   const UsuarioAuth = JSON.parse(localStorage.getItem("user"));
@@ -7,10 +8,17 @@ export const RoutesApp = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Register/>} />
-        <Route path="/login" element={<Login/>} />
+        <Route path="/" element={<Register />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/home" element={UsuarioAuth ? <HomePage /> : <Login />} />
-        <Route path="/feed" element={UsuarioAuth ? <FeedPage /> : <Login />} />
+        <Route
+          path="/feed"
+          element={
+            <PrivateRoute>
+              <FeedPage />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/perfil"
           element={UsuarioAuth ? <PerfilPage /> : <Login />}
