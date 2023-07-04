@@ -8,6 +8,7 @@ export const RoutesApp = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Register/>} />
+        <Route path="/login" element={<Login/>} />
         <Route path="/home" element={UsuarioAuth ? <HomePage /> : <Login />} />
         <Route path="/feed" element={UsuarioAuth ? <FeedPage /> : <Login />} />
         <Route

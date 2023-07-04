@@ -20,7 +20,7 @@ export const LogoImg = styled.img`
 width: 100%;
 height: 100%;
 `
-export const FormRegister = styled.form`
+export const Form = styled.form`
 width: 90%;
 max-width: 470px;
 background-color: ${({theme})=>theme.cores.app};

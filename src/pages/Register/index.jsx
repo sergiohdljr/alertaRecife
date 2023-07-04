@@ -1,5 +1,5 @@
 import logo from '../../assets/logo_resized.png'
-import { FildSet, FormRegister, ImageContainer, InputFild, Label, LogoImg, RegisterPage, SubmitBtn } from './style'
+import { FildSet, Form, ImageContainer, InputFild, Label, LogoImg, RegisterPage, SubmitBtn } from './style'
 
 export const Register = () => {
     return(
@@ -7,7 +7,7 @@ export const Register = () => {
            <ImageContainer>
              < LogoImg src={logo} alt="logo-alerta-recife" loading='lazy' />
            </ImageContainer>
-           <FormRegister>
+           <Form>
             <FildSet>
                 <Label>Nome: </Label>
                 <InputFild type="text"  />
@@ -30,7 +30,7 @@ export const Register = () => {
             </FildSet>
             
             <SubmitBtn type='submit'>Registrar</SubmitBtn>
-           </FormRegister>
+           </Form>
         </RegisterPage>
     )
 } 
