@@ -1,10 +1,16 @@
 import { MagnifyingGlass } from "@phosphor-icons/react";
-import { Aside, ModalOcorrencia, ReportarOcorrencia, Post } from "../../components/";
+import {
+  Aside,
+  ModalOcorrencia,
+  ReportarOcorrencia,
+  Post,
+} from "../../components/";
 import { FeedPageStyles } from "./style";
 import { useQuery } from "react-query";
 import { api } from "../../service/axios";
 import { UseSetModal } from "../../store";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Context } from "../../context/authContext";
 
 export const FeedPage = () => {
   const fetchFeed = api
@@ -16,8 +22,11 @@ export const FeedPage = () => {
     async () => await fetchFeed
   );
 
+  const { authenticated, handleLogin, userId } = useContext(Context);
+
   const modalState = UseSetModal((state) => state.modal);
   const [busca, setBusca] = useState("");
+
   return (
     <FeedPageStyles>
       {modalState ? <ModalOcorrencia /> : null}
@@ -26,6 +35,7 @@ export const FeedPage = () => {
         <section>
           <header>
             <form action="">
+              {console.log(userId)}
               <MagnifyingGlass size={16} />
               <input
                 type="text"
