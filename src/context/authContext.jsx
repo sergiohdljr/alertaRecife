@@ -8,7 +8,6 @@ const Context = createContext();
 const AuthProvider = ({ children }) => {
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [userId, setUserId] = useState();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -30,9 +29,9 @@ const AuthProvider = ({ children }) => {
     });
 
     localStorage.setItem("token", JSON.stringify(token));
+    localStorage.setItem("userId", JSON.stringify(id));
     api.defaults.headers.Authorization = `Bearer ${JSON.stringify(token)}`;
     setAuthenticated(true);
-    setUserId(id);
     history.push("/feed");
     location.reload();
   };
@@ -42,7 +41,7 @@ const AuthProvider = ({ children }) => {
   }
 
   return (
-    <Context.Provider value={{ authenticated, loading, handleLogin, userId }}>
+    <Context.Provider value={{ authenticated, loading, handleLogin }}>
       {children}
     </Context.Provider>
   );
