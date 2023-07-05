@@ -75,7 +75,6 @@ export const PerfilPage = () => {
                   />
                 );
               })}
-              {console.log(usuario?.Ocorrencias?.tipoDaOcorrencia)}
           </section>
         </div>
       </main>
