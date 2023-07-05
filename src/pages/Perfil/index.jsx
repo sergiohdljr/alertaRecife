@@ -46,7 +46,7 @@ export const PerfilPage = () => {
                   loading="lazy"
                 />
               </figure>
-              <button></button>
+              <button>Editar Perfil</button>
             </div>
             <div className="name-user-info">
               <h1>{usuario?.nome}</h1>
@@ -60,7 +60,23 @@ export const PerfilPage = () => {
             </div>
             <h2 className="Ocorrencias">Ocorrencias</h2>
           </div>
-          <section className="ocorrencias"></section>
+          <section className="ocorrencias">
+            {usuario?.Ocorrencias &&
+              usuario.Ocorrencias.map((ocorrencia) => {
+                return (
+                  <Post
+                    key={ocorrencia.id}
+                    displayName={usuario?.nome}
+                    email={usuario?.email}
+                    descricaoDaOcorrencia={ocorrencia.descricaoDaOcorrencia}
+                    enderecoOcorrencia={ocorrencia.enderecoOcorrencia}
+                    tipoOcorrencia={ocorrencia.tipoDaOcorrencia}
+                    photoURL={usuario?.fotoPerfil}
+                  />
+                );
+              })}
+              {console.log(usuario?.Ocorrencias?.tipoDaOcorrencia)}
+          </section>
         </div>
       </main>
     </PerfilPageStyles>
