@@ -16,6 +16,7 @@ import { api } from "../../service/axios";
 
 export const Register = () => {
   const [LinkAvatar, setLinkAvatar] = useState();
+  const [loadingImg, setLoadingImg] = useState(true);
 
   const settingsCloudnary = {
     cloud_name: "dfnzy2bk9",
@@ -29,23 +30,23 @@ export const Register = () => {
     img.append("file", formDados.avatar[0]);
     img.append("upload_preset", settingsCloudnary.upload_preset);
 
-    await axios
+    const getUrlImg = await axios
       .post(
         `https://api.cloudinary.com/v1_1/${settingsCloudnary.cloud_name}/image/upload`,
         img
       )
-      .then((resp) => setLinkAvatar(resp.data.secure_url));
-
-    const payload = {
-      nome: formDados.nome,
-      email: formDados.email,
-      senha: formDados.senha,
-      fotoPerfil: LinkAvatar,
-    };
-
-    const registerUser = await api
-      .post("/register", payload)
-      .then((resp) => console.log(resp.status));
+      .then(async (resp) => {
+        setLinkAvatar(resp.data.secure_url);
+        setLoadingImg(false);
+        await api
+          .post("/register", {
+            nome: formDados.nome,
+            email: formDados.email,
+            senha: formDados.senha,
+            fotoPerfil: resp.data.secure_url,
+          })
+          .then((resp) => console.log(resp.status));
+      });
   };
 
   return (
