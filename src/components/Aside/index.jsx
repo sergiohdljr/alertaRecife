@@ -4,9 +4,7 @@ import {
   House,
   DeviceMobile,
   User,
-  DotsThreeCircle,
   Siren,
-  Users,
   SignOut,
   MoonStars,
   SunDim,
@@ -14,7 +12,7 @@ import {
 import { Link } from "react-router-dom";
 import { UseSetModal, UseTema } from "../../store";
 
-export const Aside = () => {
+export const Aside = ({avatar, nome}) => {
   const Usuario = JSON.parse(localStorage.getItem("user"));
 
   const handleSignOutApp = () => {
@@ -35,12 +33,12 @@ export const Aside = () => {
       <div>
         <Link to={"/perfil"} rel="Ir para o perfil">
           <img
-            src={Usuario.photoURL}
+            src={avatar}
             className="img-perfil"
             alt="foto de perfil do usuário"
           />
         </Link>
-        <h3 className="h3-perfil">{Usuario.displayName} </h3>
+        <h3 className="h3-perfil">{nome} </h3>
       </div>
       <Link to={"/home"}>
         <House size={24} />
