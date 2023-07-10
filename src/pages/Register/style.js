@@ -46,7 +46,7 @@ export const Label = styled.span`
   font-size: 0.8rem;
 `;
 
-export const InputFild = styled.input`
+export const Input = styled.input`
   all: unset;
   border: 1px black solid;
   border-radius: 0.2rem;
@@ -54,7 +54,7 @@ export const InputFild = styled.input`
   height: 6rem;
   padding: 0 0.5rem 0 0.5rem;
 `;
-export const SubmitBtn = styled.button`
+export const Submit = styled.button`
   all: none;
   width: 70%;
   border: 1px black solid;
@@ -64,6 +64,8 @@ export const SubmitBtn = styled.button`
 `;
 
 export const Form = {
-  Root: Root,
-  FieldSet: FieldSet,
+  Root,
+  FieldSet,
+  Input,
+  Submit,
 };

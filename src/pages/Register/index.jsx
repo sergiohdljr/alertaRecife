@@ -3,16 +3,15 @@ import { useForm } from "react-hook-form";
 import {
   Form,
   ImageContainer,
-  InputFild,
   Label,
   LogoImg,
   RegisterPage,
-  SubmitBtn,
 } from "./style";
 import { useState } from "react";
 import axios from "axios";
 import { api } from "../../service/axios";
 import { settingsCloudnary } from "../../utils/cloudnary";
+import { Upload } from "../../style";
 
 export const Register = () => {
   const [Isloading, setIsLoading] = useState(false);
@@ -48,28 +47,28 @@ export const Register = () => {
       <Form.Root onSubmit={handleSubmit(onSubmit)}>
         <Form.FieldSet>
           <Label>Nome: </Label>
-          <InputFild type="text" {...register("nome")} />
+          <Form.Input type="text" {...register("nome")} />
         </Form.FieldSet>
         <Form.FieldSet>
           <Label>E-mail: </Label>
-          <InputFild type="text" {...register("email")} />
+          <Form.Input type="text" {...register("email")} />
         </Form.FieldSet>
         <Form.FieldSet>
           <Label>Senha: </Label>
-          <InputFild type="text" {...register("senha")} />
+          <Form.Input type="text" {...register("senha")} />
         </Form.FieldSet>
         <Form.FieldSet>
           <Label>Confirmar senha : </Label>
-          <InputFild type="text" />
+          <Form.Input type="text" />
         </Form.FieldSet>
-        <Form.FieldSet>
+        <Upload.Root>
           <Label>Foto: </Label>
-          <InputFild type="file" {...register("avatar")} />
-        </Form.FieldSet>
+          <Upload.Input type="file" {...register("avatar")} />
+        </Upload.Root>
 
-        <SubmitBtn type="submit">
+        <Form.Submit type="submit">
           {Isloading ? "Registrando..." : "Registrar"}
-        </SubmitBtn>
+        </Form.Submit>
       </Form.Root>
     </RegisterPage>
   );
