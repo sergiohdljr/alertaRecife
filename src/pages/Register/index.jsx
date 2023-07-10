@@ -1,7 +1,6 @@
 import logo from "../../assets/logo_resized.png";
 import { useForm } from "react-hook-form";
 import {
-  FildSet,
   Form,
   ImageContainer,
   InputFild,
@@ -13,15 +12,10 @@ import {
 import { useState } from "react";
 import axios from "axios";
 import { api } from "../../service/axios";
+import { settingsCloudnary } from "../../utils/cloudnary";
 
 export const Register = () => {
-  const [LinkAvatar, setLinkAvatar] = useState();
-  const [loadingImg, setLoadingImg] = useState(true);
-
-  const settingsCloudnary = {
-    cloud_name: "dfnzy2bk9",
-    upload_preset: "Alerta-Recife",
-  };
+  const [Isloading, setIsLoading] = useState(false);
 
   const { register, handleSubmit } = useForm();
 
@@ -29,23 +23,20 @@ export const Register = () => {
     const img = new FormData();
     img.append("file", formDados.avatar[0]);
     img.append("upload_preset", settingsCloudnary.upload_preset);
-
+    setIsLoading(true);
     const getUrlImg = await axios
       .post(
         `https://api.cloudinary.com/v1_1/${settingsCloudnary.cloud_name}/image/upload`,
         img
       )
       .then(async (resp) => {
-        setLinkAvatar(resp.data.secure_url);
-        setLoadingImg(false);
-        await api
-          .post("/register", {
-            nome: formDados.nome,
-            email: formDados.email,
-            senha: formDados.senha,
-            fotoPerfil: resp.data.secure_url,
-          })
-          .then((resp) => console.log(resp.status));
+        await api.post("/register", {
+          nome: formDados.nome,
+          email: formDados.email,
+          senha: formDados.senha,
+          fotoPerfil: resp.data.secure_url,
+        });
+        setIsLoading(false);
       });
   };
 
@@ -54,30 +45,32 @@ export const Register = () => {
       <ImageContainer>
         <LogoImg src={logo} alt="logo-alerta-recife" loading="lazy" />
       </ImageContainer>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <FildSet>
+      <Form.Root onSubmit={handleSubmit(onSubmit)}>
+        <Form.FieldSet>
           <Label>Nome: </Label>
           <InputFild type="text" {...register("nome")} />
-        </FildSet>
-        <FildSet>
+        </Form.FieldSet>
+        <Form.FieldSet>
           <Label>E-mail: </Label>
           <InputFild type="text" {...register("email")} />
-        </FildSet>
-        <FildSet>
+        </Form.FieldSet>
+        <Form.FieldSet>
           <Label>Senha: </Label>
           <InputFild type="text" {...register("senha")} />
-        </FildSet>
-        <FildSet>
+        </Form.FieldSet>
+        <Form.FieldSet>
           <Label>Confirmar senha : </Label>
           <InputFild type="text" />
-        </FildSet>
-        <FildSet>
+        </Form.FieldSet>
+        <Form.FieldSet>
           <Label>Foto: </Label>
           <InputFild type="file" {...register("avatar")} />
-        </FildSet>
+        </Form.FieldSet>
 
-        <SubmitBtn type="submit">Registrar</SubmitBtn>
-      </Form>
+        <SubmitBtn type="submit">
+          {Isloading ? "Registrando..." : "Registrar"}
+        </SubmitBtn>
+      </Form.Root>
     </RegisterPage>
   );
 };
