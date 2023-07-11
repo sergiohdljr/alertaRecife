@@ -11,31 +11,29 @@ import { api } from "../../service/axios";
 import { UseSetModal } from "../../store";
 import { useContext, useState } from "react";
 import { Context } from "../../context/authContext";
+import { getUser } from "../Perfil";
 
 export const FeedPage = () => {
-  const fetchFeed = api
-    .get("/ocorrencias")
-    .then((ocorrencias) => ocorrencias.data);
+  const userId = JSON.parse(localStorage.getItem("userId"));
 
-  const { data: ocorrencias } = useQuery(
-    ["ocorrencias"],
-    async () => await fetchFeed
-  );
+  const getFeedOcorrencias = async () => {
+    const { data } = await api.get("/ocorrencias");
+    return data;
+  };
 
-  const { authenticated, handleLogin, userId } = useContext(Context);
+  const { data: usuario } = useQuery("[userQuery]", () => getUser(userId));
+  const { data: Ocorrencias } = useQuery("[ocorrencias]", getFeedOcorrencias);
 
   const modalState = UseSetModal((state) => state.modal);
-  const [busca, setBusca] = useState("");
 
   return (
     <FeedPageStyles>
       {modalState ? <ModalOcorrencia /> : null}
       <main>
-        <Aside />
+        <Aside avatar={usuario?.fotoPerfil} nome={usuario?.nome} />
         <section>
           <header>
             <form action="">
-              {console.log(userId)}
               <MagnifyingGlass size={16} />
               <input
                 type="text"
@@ -44,27 +42,24 @@ export const FeedPage = () => {
               />
             </form>
           </header>
-          <ReportarOcorrencia />
-          {ocorrencias &&
-            ocorrencias
-              .slice(0)
-              .reverse()
-              .filter(({ enderecoOcorrencia }) => {
-                const valorBusca = busca.toLowerCase();
-                const filtro = enderecoOcorrencia?.toLowerCase();
-                return filtro.includes(valorBusca);
-              })
-              ?.map((ocorrencia) => (
-                <Post
-                  key={ocorrencia.id}
-                  descricaoDaOcorrencia={ocorrencia.descricaoDaOcorrencia}
-                  tipoOcorrencia={ocorrencia.tipoDaOcorrencia}
-                  enderecoOcorrencia={ocorrencia.enderecoOcorrencia}
-                  email={ocorrencia.autor.email}
-                  displayName={ocorrencia.autor.nome}
-                  photoURL={ocorrencia.autor.fotoPerfil}
-                />
-              ))}
+          <ReportarOcorrencia
+            nome={usuario?.nome}
+            email={usuario?.email}
+            foto={usuario?.fotoPerfil}
+          />
+          {Ocorrencias?.map((ocorrencia) => {
+            return (
+              <Post
+                key={ocorrencia.id}
+                displayName={ocorrencia.autor.nome}
+                email={ocorrencia.autor.email}
+                descricaoDaOcorrencia={ocorrencia.descricaoDaOcorrencia}
+                enderecoOcorrencia={ocorrencia.enderecoOcorrencia}
+                tipoOcorrencia={ocorrencia.tipoDaOcorrencia}
+                photoURL={ocorrencia.autor.fotoPerfil}
+              />
+            );
+          })}
         </section>
       </main>
     </FeedPageStyles>

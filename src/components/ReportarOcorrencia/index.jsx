@@ -2,7 +2,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Images } from "@phosphor-icons/react";
 import { useGeolocated } from "react-geolocated";
 import { useForm } from "react-hook-form";
-import { Erro,InputEndereco,ReportarOcorrenciaStyle,SuggestionsAutoComplete,} from "./styles";
+import {
+  Erro,
+  InputEndereco,
+  ReportarOcorrenciaStyle,
+  SuggestionsAutoComplete,
+} from "./styles";
 import { schemaPost } from "./schemaDeValidacao";
 import { api } from "../../service/axios";
 import { UseSetModal } from "../../store";
@@ -11,8 +16,7 @@ import { useJsApiLoader } from "@react-google-maps/api";
 import { apiKey } from "../../apikey";
 import usePlacesAutocomplete from "use-places-autocomplete";
 
-export const ReportarOcorrencia = () => {
-  const Usuario = JSON.parse(localStorage.getItem("user"));
+export const ReportarOcorrencia = ({ foto, email, nome }) => {
   const { coords } = useGeolocated();
   const closeModal = UseSetModal((state) => state.closeModal);
 
@@ -76,7 +80,7 @@ export const ReportarOcorrencia = () => {
     <div>
       <ReportarOcorrenciaStyle onSubmit={handleSubmit(onSubmit)}>
         <figure>
-          <img src={Usuario.photoURL} alt="" />
+          <img src={foto} alt="" />
         </figure>
         <div className="text-area-icons">
           <textarea

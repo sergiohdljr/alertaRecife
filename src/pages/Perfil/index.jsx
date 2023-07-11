@@ -7,17 +7,17 @@ import { api } from "../../service/axios";
 import { useQuery } from "react-query";
 import { UseSetModal } from "../../store";
 
+export const getUser = async (id) => {
+  const { data } = await api.get(`/user/${id}`);
+  return data;
+};
+
 export const PerfilPage = () => {
   const userId = JSON.parse(localStorage.getItem("userId"));
 
-  const getUser = async () => {
-    const { data } = await api.get(`/user/${userId}`);
-    return data;
-  };
-
   const { data: usuario } = useQuery(
     "[userQuery]",
-    async () => await getUser()
+    async () => await getUser(userId)
   );
 
   const modalState = UseSetModal((state) => state.modal);
