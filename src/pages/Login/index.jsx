@@ -1,6 +1,6 @@
 import { LoginPage } from "./style";
 import logo from "../../assets/logo_resized.png";
-import { Form } from "../Register/style";
+import { Form, Label } from "../Register/style";
 import { useForm } from "react-hook-form";
 import { Context } from "../../context/authContext";
 import { useContext } from "react";

@@ -7,15 +7,21 @@ import { useContext } from "react";
 export const history = createBrowserHistory();
 export const RoutesApp = () => {
   const PrivateRoute = ({ children }) => {
-    const { authenticated, loading } = useContext(Context);
+    const { authenticated } = useContext(Context);
 
     return authenticated ? children : <Login />;
+  };
+
+  const Root = () => {
+    const { authenticated } = useContext(Context);
+    return authenticated ? <FeedPage /> : <Login />;
   };
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Register />} />
+        <Route path="/" element={<Root />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route
           path="/feed"
